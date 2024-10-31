@@ -20,6 +20,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+	# search our auth stuff first, then pass the rest off to the base libs
+	path('accounts/', include('accounts.urls')),
+	path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
