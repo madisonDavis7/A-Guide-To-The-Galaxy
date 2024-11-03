@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 	# 'django_extensions',
 	
     # -- Local apps -- #
+	'accounts',
 ]
 
 MIDDLEWARE = [
@@ -120,7 +121,7 @@ DATABASES['default'] = DATABASES[default_database]
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
-# AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.SpaceTraveler'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

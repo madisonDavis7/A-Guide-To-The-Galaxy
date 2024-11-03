@@ -29,6 +29,12 @@ def get_planet_name(planet_number: int) -> str:
 
 # Create your models here.
 class SpaceTraveler(AbstractUser):
+	REQUIRED_FIELDS = [
+		'home_planet',
+		'language',
+		'security_question',
+		'security_answer',
+	]
 	home_planet = models.IntegerField(
 		verbose_name='planet', 
 		choices=PLANETS, 
