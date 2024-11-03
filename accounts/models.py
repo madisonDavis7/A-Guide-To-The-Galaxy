@@ -20,7 +20,7 @@ SECURITY_QUESTIONS = (
 	(1, 'What street did you grow up on?'),
 	(2, "What is your mother's maiden name?"),
 	(3, 'Where was your first date?'),
-	(4, 'How many fingers am I holding up?'), # FIXME
+	(4, 'What is the name of your best childhood friend?'),
 )
 
 def get_planet_name(planet_number: int) -> str:
