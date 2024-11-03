@@ -54,7 +54,7 @@ class SpaceTraveler(AbstractUser):
 		null=True, blank=True
 	)
 	security_question = models.IntegerField(
-		max_length=2, 
+		# max_length=2, 
 		choices=SECURITY_QUESTIONS, 
 		null=True, blank=False
 	)
