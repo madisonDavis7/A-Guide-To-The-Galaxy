@@ -1,0 +1,26 @@
+{
+	"configurations": [
+		{
+			"name": "Launch local dev server",
+			"type": "debugpy",
+			"request": "launch",
+			"args": [
+				"runserver"
+			],
+			"django": true,
+			"autoStartBrowser": false,
+			"program": "${workspaceFolder}/manage.py"
+		},
+		{
+			"name": "Run tests",
+			"type": "debugpy",
+			"request": "launch",
+			"args": [
+				"test"
+			],
+			"django": true,
+			"autoStartBrowser": false,
+			"program": "${workspaceFolder}/manage.py"
+		}
+	]
+}
