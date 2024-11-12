@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 	# -- 3rd-party apps -- #
 	#'debug_toolbar',
 	'crispy_forms',
-	# 'crispy_bootstrap5',
+	'crispy_bootstrap5',
 	# 'django_extensions',
 	
     # -- Local apps -- #
@@ -170,7 +170,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # enable caching and compression when serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 # Default primary key field type
