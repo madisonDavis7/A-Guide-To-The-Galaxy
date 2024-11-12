@@ -1,0 +1,3 @@
+[submodule "testing/minioidc"]
+	path = testing/minioidc
+	url = https://github.com/fernandoescolar/minioidc.git
