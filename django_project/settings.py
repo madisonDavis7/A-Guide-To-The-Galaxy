@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-FORCE_SCRIPT_NAME = '/' + os.environ.get('SITE_NAME', '')
+FORCE_SCRIPT_NAME = '/' + os.environ.get('SITE_NAME', '') if os.environ.get('SITE_NAME', '') != '' else ''
 
 
 # Quick-start development settings - unsuitable for production
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	
 	# -- 3rd-party apps -- #
-	'debug_toolbar',
+	#'debug_toolbar',
 	'crispy_forms',
 	# 'crispy_bootstrap5',
 	# 'django_extensions',
@@ -68,15 +68,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'debug_toolbar.middleware.DebugToolbarMiddleware',
+	#'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
 
 ROOT_URLCONF = 'django_project.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [BASE_DIR / "templates", ],
+		'DIRS': [BASE_DIR / "templates" ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -168,6 +169,8 @@ STATICFILES_DIRS = [ BASE_DIR / "static" ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 # enable caching and compression when serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 
 # Default primary key field type
