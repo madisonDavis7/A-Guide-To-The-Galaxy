@@ -28,10 +28,9 @@ urlpatterns = [
     path('', HomepageView.as_view(), name='home'),
 ]
 
-'''
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
 		path(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
-'''
