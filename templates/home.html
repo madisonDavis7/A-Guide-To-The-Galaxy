@@ -7,16 +7,19 @@
 <h1>A Guide To The Galaxy</h1>
 
 <div class="intro"> 
-    describe the goal of the app/ what it is
+    Describe the goal of the app/ what it is
 </div>
 <div class="about">
     About the developers/ idea behind the app
 </div>
 
-<div class="sign-up">
+
 <h2>Sign Up and Get Started Today!</h2>
-<button type="submit">Sign Up</button>
+<div class="button-inline">
+    <a class="button-29" href="{% url 'signup' %}">Sign Up</a>
 </div>
+
+
 <h2>Choose Your Own Adventure</h2>
 
 <div class="border">
@@ -34,7 +37,7 @@
             <img src="{% static 'images/jupiter.jpg' %}">
         </div>
         <div class="slide">
-            <img src="{% static 'images/saturn.jpg' %}">
+            <img src="{% static 'images/saturn1.jpg' %}">
         </div>
         <div class="slide">
             <img src="{% static 'images/uranus.png' %}">
