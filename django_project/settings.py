@@ -65,7 +65,7 @@ INSTALLED_APPS = [
 	'allauth.account',
 	'allauth.socialaccount',
 	'allauth.socialaccount.providers.github',
-	# 'allauth.socialaccount.providers.openid_connect',
+	'allauth.socialaccount.providers.openid_connect',
 	
 	# -- Local apps -- #
 	# 'accounts',
