@@ -68,3 +68,6 @@ class SpaceTravelerProfile(models.Model):
 		related_name='profile',
 		null=True, blank=False,
 	)
+
+	# def get_profile_is_user(self):
+	# 	return self.pk == self.real_account.pk

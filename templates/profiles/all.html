@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% comment %} {% load static %} {% endcomment %}
+
+
+{% block title %}Profiles{% endblock title %}
+
+{% block content %}
+
+{% comment %} TODO - make not bad {% endcomment %}
+<ul>
+	{% for object in object_list %}
+	<li>{{ object }}</li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}

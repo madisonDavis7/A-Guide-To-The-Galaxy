@@ -8,6 +8,16 @@
 {% block content %}
 <h2>Update your profile</h2>
 
+{% if object.real_account == user %}
+	
+{% else %}
+<p>nope</p>
+{% endif %}
+
+<p>{{ object }}</p>
+<p>{{ object.real_account }}</p>
+<p>{{ user.pk }}</p>
+
 <form action="" method="post">{% csrf_token %}
 	{{ form|crispy }}
 	<button type="submit" class="btn btn-info">Update profile</button>
