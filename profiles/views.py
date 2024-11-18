@@ -1,18 +1,17 @@
-import logging
-from typing import Any
-
 from django.conf import settings
-from django.forms import BaseModelForm, Form
-from django.http import HttpRequest, HttpResponse
-from django.http.response import HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, AccessMixin
+from django.contrib.auth.mixins import (
+	AccessMixin, # control what happens if 403
+	LoginRequiredMixin, # ensure user is logged in
+    UserPassesTestMixin, # extra conditions that, if failed, throw a 403
+)
+from django.contrib.auth.models import User
+from django.forms import BaseModelForm
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from .forms import SpaceTravelerProfileForm
 from .models import SpaceTravelerProfile
-from django.contrib.auth.models import User
 
 
 class SpaceTravelerProfileCreateView(LoginRequiredMixin, UserPassesTestMixin, AccessMixin, CreateView):
@@ -47,6 +46,7 @@ class SpaceTravelerProfileCreateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 		return redirect('profiles:update', pk=SpaceTravelerProfile.objects.get(real_account=self.request.user).pk)
 
 
+	# the args here are kinda fucked, but it's worked so far, so it's probably fine
 	def get_form(self, form_class: BaseModelForm | None = None) -> BaseModelForm:
 		"""
 		Set the real_account field (hidden) to link the profile to the actual user account that is currently signed in.
@@ -60,15 +60,13 @@ class SpaceTravelerProfileCreateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 		"""
 		Quadruple-check that the real_account field (hidden) is set to the currently signed-in user, then save the form.
 		"""
+		# get the pending object to be created
 		obj: SpaceTravelerProfile = form.save(commit=False)
-		# form.real_account = User.objects.get(pk=self.request.user.pk)
-		# form.data
-		# form.initial['real_account'] = self.request.user
+		# make sure this field is set to the current user
 		obj.real_account = User.objects.get(pk=self.request.user.pk)
-		# form.real_account = User.objects.get(pk=self.request.user.pk)
-		# logging.info(self.request.user)
+		# save and commit the object
 		obj.save()
-		# return HttpResponseRedirect(self.get_success_url())
+		# run the rest of the method from the parent class(es)
 		return super().form_valid(form)
 
 
