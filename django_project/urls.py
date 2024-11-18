@@ -17,20 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from . import views
+# from . import views
+from .views import HomepageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 	# search our auth stuff first, then pass the rest off to the base libs
 	path('accounts/', include('accounts.urls')),
 	path('accounts/', include('django.contrib.auth.urls')),
-    path('', views.home, name='home'),
+    path('', HomepageView.as_view(), name='home'),
 ]
 
-'''
+
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
 		path(r'^__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
-'''

@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 	
 	# -- 3rd-party apps -- #
-	#'debug_toolbar',
+	'debug_toolbar',
 	'crispy_forms',
 	'crispy_bootstrap5',
 	# 'django_extensions',
@@ -68,7 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	#'debug_toolbar.middleware.DebugToolbarMiddleware',
+	'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 
@@ -172,8 +172,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-
 
 
 # Default primary key field type
