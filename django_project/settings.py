@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
+import yaml
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +22,9 @@ FORCE_SCRIPT_NAME = '/' + os.environ.get('SITE_NAME', '') if os.environ.get('SIT
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+
+with open('secrets.yml', 'r') as f1:
+	secrets = yaml.safe_load(f1)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#'
@@ -53,6 +58,7 @@ INSTALLED_APPS = [
 	'debug_toolbar',
 	'crispy_forms',
 	'crispy_bootstrap5',
+	'extra_views',
 	# 'django_extensions',
 
 	# -- Allauth stuff --- #
@@ -159,9 +165,12 @@ SOCIALACCOUNT_PROVIDERS = {
 	'github': {
 		'APPS': [
 			{
-				'client_id': ...,
-				'secret': ...,
-				'key': ...,
+				'client_id': 'Ov23lia2PJfGFjNGTPi4',
+				'secret': '548f4217db504d8893d6661dffc9f3f1f9301aa9',
+				# 'key': ...,
+			} if os.environ.get('DJANGO_DATABASE', 'local') == 'local' else {
+				'client_id': secrets['github']['client_id'],
+				'secret': secrets['github']['secret'],
 			}
 		],
 		'SCOPE': [
@@ -208,6 +217,7 @@ LOGIN_URL = FORCE_SCRIPT_NAME + '/accounts/login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+ACCOUNT_EMAIL_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
@@ -241,3 +251,28 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            # "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+			"level": "INFO",
+            "propagate": False,
+        },
+    },
+}

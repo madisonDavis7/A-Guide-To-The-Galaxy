@@ -164,7 +164,7 @@ cython_debug/
 
 # Misc.
 **.DS_Store
-secrets.toml
+secrets.yml
 
 # temp
 testing/
