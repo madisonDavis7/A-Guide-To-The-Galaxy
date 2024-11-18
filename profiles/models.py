@@ -71,3 +71,6 @@ class SpaceTravelerProfile(models.Model):
 
 	# def get_profile_is_user(self):
 	# 	return self.pk == self.real_account.pk
+
+	def __str__(self) -> str:
+		return f"{self.real_account.username}'s profile" #type:ignore

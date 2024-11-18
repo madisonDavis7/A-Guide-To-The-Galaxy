@@ -6,4 +6,9 @@ from .models import SpaceTravelerProfile
 # Register your models here.
 @admin.register(SpaceTravelerProfile)
 class SpaceTravelerProfileAdmin(admin.ModelAdmin):
-	pass
+	list_display = [
+		'real_account',
+		'age',
+		'home_planet',
+		'language',
+	]
