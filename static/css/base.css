@@ -59,7 +59,8 @@ body {
 .border {
     padding-top: 3%;
     padding-bottom: 3%;
-    border: none;
+    border-color: transparent;
+    outline: none;
 }
 
 .slideshow-container {
@@ -186,4 +187,10 @@ img {
     justify-content: center;
     align-items: center;
     gap: 30px;
+}
+
+/* sign up/ login */
+
+.form-text {
+    color: white !important;
 }

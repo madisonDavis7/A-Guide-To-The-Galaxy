@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 # from . import views
 from .views import HomepageView
+from .views import planetary, stellar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,8 @@ urlpatterns = [
 	path('accounts/', include('accounts.urls')),
 	path('accounts/', include('django.contrib.auth.urls')),
     path('', HomepageView.as_view(), name='home'),
+    path('planetary/', planetary, name='planetary'),
+    path('stellar/', stellar, name='stellar'),
 ]
 
 

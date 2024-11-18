@@ -9,3 +9,9 @@ def home(request):
 
 class HomepageView(TemplateView):
     template_name = 'home.html'
+
+def planetary(request):
+    return render(request, 'planetary.html')
+
+def stellar(request):
+    return render(request, 'stellar.html')

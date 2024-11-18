@@ -9,7 +9,6 @@ class SpaceTravelerCreationForm(UserCreationForm):
 		for field in SpaceTraveler.REQUIRED_FIELDS:
 			self.fields[field].required = True
 		
-
 	class Meta:
 		model = SpaceTraveler
 		fields = [
