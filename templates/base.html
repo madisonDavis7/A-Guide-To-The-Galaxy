@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}A Guide to The Galaxy{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        <!-- Content from child templates will go here -->
+        {% endblock content %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      let slideIndex = 0;
+      showSlides(slideIndex);
+
+      function changeSlide(n) {
+          showSlides(slideIndex += n);
+      }
+
+      function showSlides(n) {
+          const slides = document.getElementsByClassName("slide");
+
+          if (n >= slides.length) { slideIndex = 0; }
+          if (n < 0) { slideIndex = slides.length - 1; }
+
+          for (let i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none"; 
+          }
+
+          slides[slideIndex].style.display = "block";  
+      }
+    </script>
+</body>
+</html>
