@@ -9,6 +9,12 @@
 
 <h2>{{ user.first_name }} {{ user.last_name }}</h2>
 
+{% if object.real_account == user %}
+<ul>
+	<li><a href="{% url "profiles:update" pk=object.pk %}">Edit profile</a></li>
+</ul>
+{% endif %}
+
 <h3>Bio</h3>
 <p>{{ object.bio }}</p>
 
