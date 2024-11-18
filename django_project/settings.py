@@ -23,8 +23,12 @@ FORCE_SCRIPT_NAME = '/' + os.environ.get('SITE_NAME', '') if os.environ.get('SIT
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-with open('secrets.yml', 'r') as f1:
-	secrets = yaml.safe_load(f1)
+try:
+	with open('secrets.yml', 'r') as f1:
+		secrets = yaml.safe_load(f1)
+except FileNotFoundError:
+	print('secrets.yml file not found in this directory. Setting the `secrets` dict to empty.')
+	secrets = {}
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#'
