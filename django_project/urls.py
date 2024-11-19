@@ -31,6 +31,8 @@ urlpatterns = [
 
 	path('profiles/', include('profiles.urls')),
 	path('', HomepageView.as_view(), name='home'),
+	path('planetary/', planetary, name='planetary'),
+	path('stellar/', stellar, name='stellar'),
 	#path('', SignupView.as_view(), name='signup'),
 ]
 

@@ -25,8 +25,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li><a  class="nav-link px-2 link-dark" ><i class="white">Planetary</i></a></li>
-              <li><a  class="nav-link px-2 link-dark"><i class="white">Stellar</i></a></li>
+              <li><a  href="{% url 'planetary' %}" class="nav-link px-2 link-dark" ><i class="white">Planetary</i></a></li>
+              <li><a  href="{% url 'stellar' %}"class="nav-link px-2 link-dark"><i class="white">Stellar</i></a></li>
             </ul>
             {% if user.is_authenticated %} 
             <div class="mr-auto">
