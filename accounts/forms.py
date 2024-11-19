@@ -22,8 +22,7 @@ class SpaceTravelerCreationForm(UserCreationForm):
 			'security_answer',
 		]
 		
-		
-
+	
 
 class SpaceTravelerChangeForm(UserChangeForm):
 	def __init__(self, *args, **kwargs) -> None:
