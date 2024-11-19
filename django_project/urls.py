@@ -28,15 +28,9 @@ urlpatterns = [
 	path('accounts/', include('accounts.urls')),
 	path('accounts/', include('allauth.urls')),
 	path('accounts/', include('django.contrib.auth.urls')),
-<<<<<<< HEAD
-    path('', HomepageView.as_view(), name='home'),
-    path('planetary/', planetary, name='planetary'),
-    path('stellar/', stellar, name='stellar'),
-=======
 
 	path('profiles/', include('profiles.urls')),
 	path('', HomepageView.as_view(), name='home'),
->>>>>>> ca738036a0c1eac1014bc5b055e6dce64f772c3e
 ]
 
 
