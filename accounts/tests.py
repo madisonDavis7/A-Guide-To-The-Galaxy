@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-from .models import SpaceTraveler
 
 
 
@@ -19,18 +18,10 @@ class ManualUserCreationTests(TestCase):
 			username='testuser',
 			email='testuser@example.com',
 			password='testpass1234',
-			home_planet=2,
-			language='en',
-			security_question=0,
-			security_answer='Mr. Jenkins'
 		)
 
 		eq(user.username, 'testuser')
 		eq(user.email, 'testuser@example.com')
-		eq(user.home_planet, 2)
-		eq(user.language, 'en')
-		eq(user.security_question, 0)
-		eq(user.security_answer, 'Mr. Jenkins')
 
 		self.assertTrue(user.is_active)
 		# make sure they're not a god
@@ -46,18 +37,10 @@ class ManualUserCreationTests(TestCase):
 			username='testsuperuser',
 			email='testsuperuser@example.com',
 			password='testpass1234',
-			home_planet=0,
-			language='it',
-			security_question=0,
-			security_answer='Mrs. Jenkins'
 		)
 
 		eq(superuser.username, 'testsuperuser')
 		eq(superuser.email, 'testsuperuser@example.com')
-		eq(superuser.home_planet, 0)
-		eq(superuser.language, 'it')
-		eq(superuser.security_question, 0)
-		eq(superuser.security_answer, 'Mrs. Jenkins')
 		
 		self.assertTrue(superuser.is_active)
 		# make sure they ARE a god
@@ -80,24 +63,19 @@ class SignUpFormTests(TestCase):
 
 
 	def test_signupViewName(self):
-		response = self.client.get(reverse('signup'))
+		response = self.client.get(reverse('account_signup'))
 
 		self.assertEqual(response.status_code, 200)
-		self.assertTemplateUsed(response, 'registration/signup.html')
 
 
 	def test_signupForm(self):
 		response = self.client.post(
-			reverse('signup'),
+			reverse('account_signup'),
 			{
 				'username': 'testuser',
 				'email': 'testuser@example.com',
 				'password1': 'testpass123',
 				'password2': 'testpass123',
-				'home_planet': 2,
-				'language': 'en',
-				'security_question': 0,
-				'security_answer': 'Mr. Jenkins',
 			}
 		)
 
@@ -107,3 +85,51 @@ class SignUpFormTests(TestCase):
 		self.assertEqual(allUserObjects.count(), 1)  # make sure only one user was created
 		self.assertEqual(allUserObjects[0].username, 'testuser')
 		self.assertEqual(allUserObjects[0].email, 'testuser@example.com')
+
+
+
+class UserEditFormTests(TestCase):
+	"""
+	Verify the functionality of the user modify form
+	"""
+
+	def test_modifyViewExistsAtCorrectUrlAndRedirects(self):
+		response = self.client.get('/accounts/1/update/')
+
+		self.assertEqual(response.status_code, 302) # should redirect, because we're not signed in
+
+	def test_modifyViewName(self):
+		response = self.client.get(reverse('accounts_info_update', kwargs={'pk': 1}))
+
+		self.assertEqual(response.status_code, 302) # should redirect, because we're not signed in
+
+	def test_modifyForm(self):
+		# sign up
+		signup = self.client.post(
+			reverse('account_signup'),
+			{
+				'username': 'testuser',
+				'email': 'testuser@example.com',
+				'password1': 'testpass123',
+				'password2': 'testpass123',
+			}
+		)
+		self.assertRedirects(signup, '/profiles/create/')
+
+		self.client.login(username='testuser', password='testpass123')
+		response = self.client.post(
+			reverse('accounts_info_update', kwargs={'pk': 1}),
+			{
+				'email': 'newemail@example.com',
+				'first_name': 'Test',
+				'last_name': 'User',
+			}
+		)
+
+		self.assertEqual(response.status_code, 302)
+
+		allUserObjects = get_user_model().objects.all()
+		self.assertEqual(allUserObjects.count(), 1)  # make sure only one user was created
+		self.assertEqual(allUserObjects[0].email, 'newemail@example.com')
+		self.assertEqual(allUserObjects[0].first_name, 'Test')
+		self.assertEqual(allUserObjects[0].last_name, 'User')
