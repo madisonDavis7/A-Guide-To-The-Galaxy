@@ -1,9 +1,11 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 from django.conf.global_settings import LANGUAGES
+from django.db import models
+
+# Create your models here.
 
 
-PLANETS = (
+PLANETS = [
     (0, 'Mercury'),
     (1, 'Venus'),
     (2, 'Earth'),
@@ -13,7 +15,7 @@ PLANETS = (
     (6, 'Uranus'),
     (7, 'Neptune'),
     (8, 'Pluto'),
-)
+]
 
 SECURITY_QUESTIONS = (
 	(0, 'What was the name of your first pet?'),
@@ -23,12 +25,9 @@ SECURITY_QUESTIONS = (
 	(4, 'What is the name of your best childhood friend?'),
 )
 
-def get_planet_name(planet_number: int) -> str:
-	return PLANETS[planet_number][1]
-
 
 # Create your models here.
-class SpaceTraveler(AbstractUser):
+class SpaceTravelerProfile(models.Model):
 	REQUIRED_FIELDS = [
 		'home_planet',
 		'language',
@@ -63,3 +62,15 @@ class SpaceTraveler(AbstractUser):
 		null=True, blank=False
 	)
 
+	real_account = models.OneToOneField(
+		settings.AUTH_USER_MODEL,
+		on_delete=models.CASCADE,
+		related_name='profile',
+		null=True, blank=False,
+	)
+
+	# def get_profile_is_user(self):
+	# 	return self.pk == self.real_account.pk
+
+	def __str__(self) -> str:
+		return f"{self.real_account.username}'s profile" #type:ignore

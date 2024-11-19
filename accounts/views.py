@@ -1,11 +1,20 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conf import settings
 
-from .forms import SpaceTravelerCreationForm
 
 # Create your views here.
-class SignUpView(CreateView):
-	form_class = SpaceTravelerCreationForm
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+	model = User
+	login_url = settings.LOGIN_URL
 	success_url = reverse_lazy('login')
-	template_name = 'registration/signup.html'
+	template_name = 'registration/update.html'
+
+	fields = [
+		'first_name',
+		'last_name',
+		'email',
+	]
+
