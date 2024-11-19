@@ -26,12 +26,23 @@ FORCE_SCRIPT_NAME = '/' + os.environ.get('SITE_NAME', '') if os.environ.get('SIT
 try:
 	with open('secrets.yml', 'r') as f1:
 		secrets = yaml.safe_load(f1)
+		print('Found secrets file.')
 except FileNotFoundError:
-	print('secrets.yml file not found in this directory. Setting the `secrets` dict to empty.')
+	print('Secrets file not found in this directory. Setting the `secrets` dict to empty.')
 	secrets = {}
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#'
+# try to grab the key from the secrets.yml file
+# if (key := secrets.get('django', {}).get('secret_key', None)):
+# 	print('Using Django SECRET_KEY from secrets.')
+# 	SECRET_KEY = key
+# else:
+# 	print('Secret key not found in secrets file. Using default (insecure!)')
+# 	SECRET_KEY = 'django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#'
+# del key
+
+# SECURITY WARNING: keep the secret key used in production secret! This will default to this insecure key if the SECRET_KEY variable isn't set in the environment.
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
