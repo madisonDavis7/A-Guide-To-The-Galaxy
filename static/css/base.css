@@ -42,7 +42,7 @@ body {
 .person2 {
     font-size: 20px;
     font-weight: 4;
-    color: #c97cbc;
+    color: #9067e7;
 }
 
 .person3 {
@@ -96,7 +96,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 90%;
-    padding: 0 10px;
+    padding: 30px;
     padding-top: 5%;
     padding-bottom: 5%;
     box-sizing: border-box;
