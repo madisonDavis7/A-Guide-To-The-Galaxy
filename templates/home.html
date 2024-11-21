@@ -7,17 +7,19 @@
 <h1>A Guide To The Galaxy</h1>
 
 <div class="intro"> 
-    describe the goal of the app/ what it is
-</div>
-<div class="about">
-    About the developers/ idea behind the app
+    <p>Whether it's traveling to a far away galaxy or exploring a planet close to home we are here to help. 
+        With so many destinations to choose some, each offering their own breath taking features, we are sure there
+        will be a destination that speaks to you. Explore the far reaches of our galaxy or take a trip to another. 
+        With our comprehensize guide you are sure to get the most out of your trip to a new world!
+    </p>
 </div>
 
-<div class="sign-up">
-<h2>Sign Up and Get Started Today!</h2>
-<button type="submit">Sign Up</button>
+<h2>Sign Up and Get Started Today</h2>
+<div class="button-inline">
+    <a class="button-29" href="{% url 'account_signup' %}">Sign Up</a>
 </div>
-<h2>Choose Your Own Adventure</h2>
+
+<h2>Explore What Space Has To Offer!</h2>
 
 <div class="border">
     <div class="slideshow-container">
@@ -25,7 +27,7 @@
             <img src="{% static 'images/mercury.jpg' %}">
         </div>
         <div class="slide">
-            <img src="{% static 'images/venus.jpg' %}">
+            <img src="{% static 'images/crab.jpg' %}">
         </div>
         <div class="slide">
             <img src="{% static 'images/mars.png' %}">
@@ -34,17 +36,31 @@
             <img src="{% static 'images/jupiter.jpg' %}">
         </div>
         <div class="slide">
-            <img src="{% static 'images/saturn.jpg' %}">
+            <img src="{% static 'images/stars.jpg' %}">
         </div>
         <div class="slide">
             <img src="{% static 'images/uranus.png' %}">
-        </div>
-        <div class="slide">
-            <img src="{% static 'images/neptune.jpg' %}">
         </div>
 
         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div>
+</div>
+
+<h2>Meet The Developers</h2>
+<div class="centered">
+    <div class="col">
+        <h4 class="person1">Madison D.</h4>
+        <p class="about-me">About me</p>
+    </div>
+    <div class="col">
+        <h4 class="person2">Soren A.</h4>
+        <p class="about-me">About me</p>
+    </div>
+    <div class="col">
+        <h4 class="person3">Noah R.</h4>
+        <p class="about-me">About me</p>
+    </div>
+
 </div>
 {% endblock content %}
