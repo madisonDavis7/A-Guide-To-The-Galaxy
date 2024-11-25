@@ -1,12 +1,33 @@
 <!-- templates/planetary/mercury.html -->
 
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
 
 <h1>A Guide To Mercury</h1>
 
-
+<div class="info-item">
+    <img src="{% static 'images/mercury.jpg' %}" class="planet-image">
+    <div class="info-text">
+        <h3>Location</h3>
+        <p>Text for location</p>
+    </div>
+</div>
+<div class="info-item">
+    <img src="{% static 'images/mercury.jpg' %}" class="planet-image">
+    <div class="info-text">
+        <h3>About</h3>
+        <p>Text for about</p>
+    </div>
+</div>
+<div class="info-item">
+    <img src="{% static 'images/mercury.jpg' %}" class="planet-image">
+    <div class="info-text">
+        <h3>Tour Info</h3>
+        <p>Text for tour</p>
+    </div>
+</div>
 
 {% endblock %}
