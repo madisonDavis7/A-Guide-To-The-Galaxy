@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 # from . import views
 from .views import HomepageView, SignupView
-from .views import planetary, stellar
+from .views import stellar
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
@@ -30,8 +30,8 @@ urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 
 	path('profiles/', include('profiles.urls')),
+	path('planetary/', include('planetary.urls')),
 	path('', HomepageView.as_view(), name='home'),
-	path('planetary/', planetary, name='planetary'),
 	path('stellar/', stellar, name='stellar'),
 	#path('', SignupView.as_view(), name='signup'),
 ]
