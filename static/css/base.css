@@ -278,3 +278,22 @@ img {
 .form-text {
     color: white !important;
 }
+
+/* planetary and stellar app layouts */
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 3%;
+}
+
+.planet-image {
+    width: 400px;
+    height: autopx;
+    object-fit: cover;
+}
+
+.info-text {
+    flex: 1;
+    text-align: left;
+}

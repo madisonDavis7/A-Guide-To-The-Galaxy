@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import PlanetaryTour
 
-# Register your models here.
+class PlanetaryTourAdmin(admin.ModelAdmin):
+    list_display = ('name', 'length', 'num_people')

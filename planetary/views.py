@@ -16,8 +16,8 @@ def pluto_page(request):
     return render(request, 'planetary/pluto_page.html')
 
 def kepler_page(request):
-    return render(request, 'planetary/depler_page.html')
+    return render(request, 'planetary/kepler_page.html')
 
 def sedna_page(request):
-    return render(request, 'planetary/sedna.html')
+    return render(request, 'planetary/sedna_page.html')
 
