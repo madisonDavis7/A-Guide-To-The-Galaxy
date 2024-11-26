@@ -42,13 +42,13 @@ body {
 .person2 {
     font-size: 20px;
     font-weight: 4;
-    color: #9067e7;
+    color: #c97cbc;
 }
 
 .person3 {
     font-size: 20px;
     font-weight: 4;
-    color: #3746fe;
+    color: #9067e7;
 }
 
 .name {
@@ -81,13 +81,16 @@ body {
 .centered {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     padding-bottom: 5%;
 }
 
 .col {
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 2%;
 }
@@ -125,7 +128,7 @@ body {
 }
 
 .about-me {
-    text-align: center;
+    text-align: left;
     color: white;
     font-size: 20px;
 }
@@ -142,7 +145,7 @@ body {
 }
 
 .purple {
-    background-color: #9669e4;
+    background-color: #9067e7;
 }
 
 .pretty {
@@ -282,18 +285,34 @@ img {
 /* planetary and stellar app layouts */
 .info-item {
     display: flex;
-    align-items: center;
-    gap: 20px;
-    padding-bottom: 3%;
+    align-items: flex-start;
+    margin-left: 15%;
+    margin-right: 15%;
+    gap: 40px;
+    margin-bottom: 5%;
+    border: 3px solid white;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .planet-image {
-    width: 400px;
-    height: autopx;
+    width: 300px;
+    max-width: 400px;
+    height: 300px;
     object-fit: cover;
 }
 
 .info-text {
     flex: 1;
     text-align: left;
+    padding-right: 20px;
+    overflow-wrap: break-word;
+    font-size: 20px;
+}
+
+.box-title {
+    text-align: center;
+    color: #9067e7;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
