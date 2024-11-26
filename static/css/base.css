@@ -14,6 +14,7 @@ h2 {
 }
 
 h3 {
+    padding-top: 10px;
     color: white;
 }
 
@@ -35,19 +36,19 @@ body {
 
 .person1 {
     font-size: 20px;
-    font-weight: 4;
+    font-weight: 6;
     color: #fe9035;
 }
 
 .person2 {
     font-size: 20px;
-    font-weight: 4;
+    font-weight: 6;
     color: #c97cbc;
 }
 
 .person3 {
     font-size: 20px;
-    font-weight: 4;
+    font-weight: 6;
     color: #9067e7;
 }
 
@@ -112,6 +113,8 @@ body {
     align-items: center;
     flex: 1;
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .column img {
