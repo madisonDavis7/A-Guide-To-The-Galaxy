@@ -16,6 +16,7 @@ h2 {
 h3 {
     padding-top: 10px;
     color: white;
+    padding-bottom: 10px;
 }
 
 body {
@@ -124,10 +125,10 @@ body {
 }
 
 .column p {
-    margin-top: 10px;
     font-size: 14px;
     color: white;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .about-me {
