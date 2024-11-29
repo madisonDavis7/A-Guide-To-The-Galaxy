@@ -280,6 +280,14 @@ img {
     gap: 30px;
 }
 
+.button-inline-tour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 5%;
+}
+
 /* sign up/ login */
 
 .form-text {
