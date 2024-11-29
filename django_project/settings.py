@@ -90,6 +90,7 @@ INSTALLED_APPS = [
 	# 'accounts',
 	'profiles',
 	'planetary',
+	'ratings',
 ]
 
 MIDDLEWARE = [
