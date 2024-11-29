@@ -34,6 +34,7 @@ urlpatterns = [
 	path('', HomepageView.as_view(), name='home'),
 	path('stellar/', stellar, name='stellar'),
 	#path('', SignupView.as_view(), name='signup'),
+
 ]
 
 

@@ -98,6 +98,43 @@
           slides[slideIndex].style.display = "block";  
       }
   </script>
+
+  <!-- js for star ratings -->
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the rating widget
+      const ratingElements = document.querySelectorAll('.star-rating');
+      
+      ratingElements.forEach(function(el) {
+          new StarRating({
+              element: el,
+              rating: el.dataset.rating,  // This is the initial rating (can be dynamic)
+              onRate: function(newRating) {
+                  const tourId = el.dataset.tourId;
+                  // Send the rating to the backend (POST request)
+                  fetch('/rate-tour/', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                          tour_id: tourId,
+                          rating: newRating
+                      })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      // Optionally, update UI with the new rating or show a success message
+                      console.log('Rating submitted:', data);
+                  })
+                  .catch(error => {
+                      console.error('Error submitting rating:', error);
+                  });
+              }
+          });
+      });
+    });
+  </script>
   
 </body>
   
