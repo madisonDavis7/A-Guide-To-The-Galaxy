@@ -50,8 +50,8 @@
         <img src="{% static 'images/pluto-tour.jpg' %}" class="planet-image">
         <div class="info-text">
             <ul>
-                <li>The length of the "tour name" is: "tour length in days" </li>
-                <li>The total number of people that can register for this tour is: "num of people"</li>
+                <li>The length of the {{ tour.name }} is: {{ tour.length }} months</li>
+                <li>The total number of people that can register for this tour is: {{tour.num_people }}</li>
                 <li>For any questions about this tour or any others we offer please reach out. We are hapy to
                     make any needed accomodations or answer any questions relevant to the services we offer.
                 </li>
