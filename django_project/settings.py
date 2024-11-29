@@ -74,6 +74,7 @@ INSTALLED_APPS = [
 	'crispy_forms',
 	'crispy_bootstrap5',
 	'django_extensions',
+	'star_ratings',
 	'allauth_ui',
 	'widget_tweaks',
 	'slippers',

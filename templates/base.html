@@ -77,8 +77,72 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
-    <!-- slides on homepage -->
-    <script src="{% static "js/slides.js" %}"></script>
+    <script>
+      let slideIndex = 0;
+      showSlides(slideIndex);
   
-  </body>
+      // Function to change slides
+      function changeSlide(n) {
+          showSlides(slideIndex += n);
+      }
+  
+      // Function to show slides based on the current index
+      function showSlides(n) {
+          const slides = document.getElementsByClassName("slide");
+          
+          // Reset the slide index if it exceeds the number of slides
+          if (n >= slides.length) {
+              slideIndex = 0; // Loop back to the first slide
+          }
+          if (n < 0) {
+              slideIndex = slides.length - 1; // Go to the last slide
+          }
+  
+          // Hide all slides
+          for (let i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none"; 
+          }
+  
+          // Show the current slide
+          slides[slideIndex].style.display = "block";  
+      }
+  </script>
+
+  <!-- js for star ratings -->
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the rating widget
+      const ratingElements = document.querySelectorAll('.star-rating');
+      
+      ratingElements.forEach(function(el) {
+          new StarRating({
+              element: el,
+              rating: el.dataset.rating,  // This is the initial rating (can be dynamic)
+              onRate: function(newRating) {
+                  const tourId = el.dataset.tourId;
+                  // Send the rating to the backend (POST request)
+                  fetch('/rate-tour/', {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                          tour_id: tourId,
+                          rating: newRating
+                      })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                      // Optionally, update UI with the new rating or show a success message
+                      console.log('Rating submitted:', data);
+                  })
+                  .catch(error => {
+                      console.error('Error submitting rating:', error);
+                  });
+              }
+          });
+      });
+    });
+  </script>
+</body>
 </html>
