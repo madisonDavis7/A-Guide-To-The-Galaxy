@@ -26,8 +26,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><a  href="{% url 'planetary' %}" class="nav-link px-2 link-dark" ><i class="white">Planetary</i></a></li>
-            <li><a  href="{% url 'stellar' %}"class="nav-link px-2 link-dark"><i class="white">Stellar</i></a></li>
+            {% comment %} using a <p> element helps format the margin and padding correctly {% endcomment %}
+            <li><a href="{% url 'planetary' %}" class="nav-link px-2 link-light fst-italic" ><p>Planetary</p></a></li>
+            <li><a href="{% url 'stellar' %}"class="nav-link px-2 link-light fst-italic"><p>Stellar</p></a></li>
           </ul>
           {% if user.is_authenticated %} 
           <div class="mr-auto">
@@ -52,8 +53,9 @@
           </div>
           {% else %}
           <ul class="navbar-nav">
-            <li><a href="{% url 'account_login' %}" class="nav-link px-2 link-dark"><i class="white">Login</i></a></li>
-            <li><a href="{% url 'account_signup' %}" class="nav-link px-2 link-dark"><i class="white">Sign Up</i></a></li>
+            {% comment %} using the bootstrap classes for light links and italics {% endcomment %}
+            <li><a href="{% url 'account_login' %}" class="nav-link px-2 link-light fst-italic"><p>Login</p></a></li>
+            <li><a href="{% url 'account_signup' %}" class="nav-link px-2 link-light fst-italic"><p>Sign Up</p></a></li>
           </ul>
           {% endif %}
         </div>
