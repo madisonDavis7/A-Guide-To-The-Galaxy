@@ -19,6 +19,7 @@ h3 {
 
 body {
     background-color: black;
+    --bs-body-color: white;
 }
 
 /* classes */
