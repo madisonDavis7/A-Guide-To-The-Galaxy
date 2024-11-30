@@ -13,11 +13,12 @@
         With our comprehensize guide you are sure to get the most out of your trip to a new world!
     </p>
 </div>
-
-<h2>Sign Up and Get Started Today</h2>
-<div class="button-inline">
-    <a class="button-29" href="{% url 'account_signup' %}">Sign Up</a>
-</div>
+{% if not user.is_authenticated %}
+    <h2>Sign Up and Get Started Today</h2>
+    <div class="button-inline">
+        <a class="button-29" href="{% url 'account_signup' %}">Sign Up</a>
+    </div>
+{% endif %}
 
 <h2>Explore What Space Has To Offer!</h2>
 

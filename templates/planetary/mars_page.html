@@ -2,6 +2,7 @@
 
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load ratings %}
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
@@ -62,6 +63,10 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="rating">
+        {% ratings tour %}
     </div>
 
     <div class="button-inline-tour">
