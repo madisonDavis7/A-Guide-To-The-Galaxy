@@ -160,6 +160,15 @@ body {
     font-weight: 700;
 }
 
+.navbar-text-lighter {
+    font-weight: 400;
+}
+
+.navbar-text-subtitle {
+    font-weight: 400;
+    margin-left: 1em;
+}
+
 /* code for the javascript images */
 .border {
     padding-top: 3%;
