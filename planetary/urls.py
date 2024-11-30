@@ -10,5 +10,4 @@ urlpatterns = [
     path('kepler/', views.kepler_page, name="kepler_page"),
     path('sedna/', views.sedna_page, name="sedna_page"),
 
-    path('ratings/', include('star_ratings.urls')),
 ]

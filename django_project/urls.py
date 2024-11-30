@@ -35,6 +35,7 @@ urlpatterns = [
 	path('planetary/', planetary, name='planetary'),
 	path('stellar/', include("stellar.urls")),
 	#path('', SignupView.as_view(), name='signup'),
+	path('ratings/', include('star_ratings.urls', namespace='ratings')),
 
 ]
 

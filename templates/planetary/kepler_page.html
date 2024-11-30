@@ -2,6 +2,7 @@
 
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load ratings %}
 {% load static %}
 
 {% block content %}
@@ -57,6 +58,11 @@
             </ul>
         </div>
     </div>
+
+    <div class="rating">
+        {% ratings tour %}
+    </div>
+    
     <div class="button-inline-tour">
         <a class="button-29" href="{% url 'planetary' %}">Back</a>
     </div>
