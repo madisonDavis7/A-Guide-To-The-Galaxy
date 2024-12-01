@@ -74,6 +74,9 @@ INSTALLED_APPS = [
 	'crispy_forms',
 	'crispy_bootstrap5',
 	'django_extensions',
+	'allauth_ui',
+	'widget_tweaks',
+	'slippers',
 
 	# -- Allauth stuff --- #
 	'allauth',
@@ -264,6 +267,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+ALLAUTH_UI_THEME = 'starry'
 
 
 # Default primary key field type
