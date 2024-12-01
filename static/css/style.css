@@ -104,6 +104,14 @@ h2 {
   margin-left: 1em;
 }
 
+.dropdown-menu {
+  background-color: white;
+  border-color: black;
+}
+.dropdown-item:active {
+  color: white !important;
+}
+
 .button-29 {
   align-items: center;
   appearance: none;
