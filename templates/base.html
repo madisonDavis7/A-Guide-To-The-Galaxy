@@ -16,7 +16,7 @@
           <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
             <img src="{% static 'images/logo.png' %}" class="logo">
             <p class="navbar-text">A Guide To The Galaxy</p>
-          </a>
+          </a>o
           <button class="navbar-toggler" type="button" 
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" 
@@ -26,7 +26,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li><a  href="{% url 'planetary' %}" class="nav-link px-2 link-dark" ><i class="white">Planetary</i></a></li>
-              <li><a  href="{% url 'stellar' %}"class="nav-link px-2 link-dark"><i class="white">Stellar</i></a></li>
+              <li><a  href="{% url 'stellarHome' %}"class="nav-link px-2 link-dark"><i class="white">Stellar</i></a></li>
             </ul>
             {% if user.is_authenticated %} 
             <div class="mr-auto">
