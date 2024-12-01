@@ -2,6 +2,11 @@
 
 A self-paced space tour app.
 
+## Requirements
+
+- Python 3.12 or newer
+- Node.js (only required during development)
+
 ## Start development
 
 ```shell
@@ -13,7 +18,7 @@ python -m venv venv
 
 # install requirements
 python -m pip -r requirements.txt
-npm install
+npm install # installs to the node_modules folder
 
 # run the dev server
 python manage.py runserver
