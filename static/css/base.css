@@ -121,8 +121,7 @@ h2 {
   position: absolute;
   width: 100%;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 img {
@@ -145,9 +144,7 @@ img {
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .prev:hover, .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
@@ -160,9 +157,7 @@ img {
 
 .button-29 {
   align-items: center;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
   background-image: linear-gradient(to right, #fe9035, #c97cbc, #9067e7, #3746fe);
   border: 0;
   border-radius: 6px;
@@ -183,8 +178,7 @@ img {
   text-align: left;
   text-decoration: none;
   transition: box-shadow 0.15s, transform 0.15s;
-  -moz-user-select: none;
-       user-select: none;
+  user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
@@ -211,4 +205,6 @@ img {
   justify-content: center;
   align-items: center;
   gap: 30px;
-}/*# sourceMappingURL=base.css.map */
+}
+
+/*# sourceMappingURL=base.css.map */
