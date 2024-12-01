@@ -39,14 +39,15 @@
                   {{ user.username }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item link-dark" href="{% url 'password_change' %}">Change password</a></li>
+                  <li><a class="dropdown-item link-dark" href="{% url 'account_change_password' %}">Change password</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li>
-                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-link nav-link ms-2" style="display:inline; cursor:pointer;">Logout</button>
-                    </form>
-                  </li>
+                  
+                  {% if user.is_superuser %}
+                  <li><a href="{% url "admin:index" %}" class="dropdown-item link-dark">Django Admin</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  {% endif %}
+
+                  <li><a href="{% url "account_logout" %}" class="dropdown-item link-dark">Logout</a></li>
                 </ul>
               </li>
             </ul>
