@@ -13,11 +13,12 @@
         With our comprehensize guide you are sure to get the most out of your trip to a new world!
     </p>
 </div>
-
-<h2>Sign Up and Get Started Today</h2>
-<div class="button-inline">
-    <a class="button-29" href="{% url 'account_signup' %}">Sign Up</a>
-</div>
+{% if not user.is_authenticated %}
+    <h2>Sign Up and Get Started Today</h2>
+    <div class="button-inline">
+        <a class="button-29" href="{% url 'account_signup' %}">Sign Up</a>
+    </div>
+{% endif %}
 
 <h2>Explore What Space Has To Offer!</h2>
 
@@ -41,6 +42,9 @@
         <div class="slide">
             <img src="{% static 'images/uranus.png' %}">
         </div>
+        <div class="slide">
+            <img src="{% static 'images/vega.jpg' %}">
+        </div>
 
         <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
@@ -51,16 +55,25 @@
 <div class="centered">
     <div class="col">
         <h4 class="person1">Madison D.</h4>
-        <p class="about-me">About me</p>
+        <p class="about-me">
+            I'm studying computer science and astronomy to combine two things I love. In 
+            my free time I enjoy playing video games or reading, particularly science fiction. A lover of coding 
+            I am constantly exploring what it has to offer. 
+        </p>
     </div>
     <div class="col">
-        <h4 class="person2">Soren A.</h4>
-        <p class="about-me">About me</p>
+        <h4 class="person2">Noah R.</h4>
+        <p class="about-me">
+            As a giant tech nerd I run my own homelab and am a collector of calculators. Outside of tech
+            I enjoy biking and camping and am a proud Eagle Scout. I am also a huge language enthusiast. 
+        </p>
     </div>
     <div class="col">
-        <h4 class="person3">Noah R.</h4>
-        <p class="about-me">About me</p>
+        <h4 class="person3">Soren A.</h4>
+        <p class="about-me">
+            Hi, my name is Soren. Also a huge tech nerd I am studying computer science and enjoy 
+            programming. In my free time I like to develop games. Other than coding I am an avid DnD player. 
+        </p>
     </div>
-
 </div>
 {% endblock content %}
