@@ -2,9 +2,10 @@
 @use "modules/functions"
 	
 body
-	background-color: colors.$gttg-background
-	color: colors.$gttg-text-primary
+	background-color: colors.$background
+	color: colors.$text-primary
 	--bs-body-color: white
+	--bs-background-color: white
 
 
 h1
@@ -35,15 +36,15 @@ h2
 
 	&1 
 		@extend .person
-		color: colors.$gttg-orange
+		color: colors.$orange
 
 	&2
 		@extend .person
-		color: colors.$gttg-purple
+		color: colors.$purple
 
 	&3
 		@extend .person
-		color: colors.$gttg-indigo
+		color: colors.$indigo
 
 // same styling as .intro
 .about-me
@@ -104,7 +105,7 @@ h2
 	@extend .pretty
 
 .navbar-text
-	color: colors.$gttg-text-primary
+	color: colors.$text-primary
 	font-weight: 700
 
 	&-lighter
