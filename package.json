@@ -10,8 +10,8 @@
 		"build-allauth": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --minify",
 		"build-allauth:watch": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --watch",
 
-		"compile-sass": "npx sass -I static/css static/css/base.sass static/css/base.css",
-		"compile-sass:watch": "npx sass -I static/css static/css/base.sass static/css/base.css --watch"
+		"compile-sass": "npx sass -I static/css static/css/style.sass static/css/style.css",
+		"compile-sass:watch": "npx sass -I static/css static/css/base.sass static/css/style.css --watch"
 	},
 	"repository": {
 		"type": "git",

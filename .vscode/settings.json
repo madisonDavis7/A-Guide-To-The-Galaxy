@@ -5,6 +5,6 @@
 		"/static/css/parts/**"
 	],
 	"liveSassCompile.settings.includeItems": [
-		"/**/base.sass"
+		"/**/style.sass"
 	],
 }
