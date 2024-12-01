@@ -4,7 +4,7 @@
 	"description": "A Guide to the Galaxy",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-
+    
 		"build": "npm run-script build-allauth && npm run-script compile-sass && python manage.py collectstatic --noinput",
 
 		"build-allauth": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --minify",
