@@ -20,6 +20,11 @@ h3 {
 body {
     background-color: black;
     --bs-body-color: white;
+
+    --gttg-orange: #fe9035;
+    --gttg-pink: #c97cbc;
+    --gttg-purple: #9067e7;
+    --gttg-indigo: #3746fe;
 }
 
 /* classes */
@@ -37,19 +42,19 @@ body {
 .person1 {
     font-size: 20px;
     font-weight: 4;
-    color: #fe9035;
+    color: var(--gttg-orange);
 }
 
 .person2 {
     font-size: 20px;
     font-weight: 4;
-    color: #9067e7;
+    color: var(--gttg-purple);
 }
 
 .person3 {
     font-size: 20px;
     font-weight: 4;
-    color: #3746fe;
+    color: var(--gttg-indigo);
 }
 
 .name {
@@ -143,16 +148,17 @@ body {
 }
 
 .purple {
-    background-color: #9669e4;
+    /* background-color: #9669e4; */
+    background-color: var(--gttg-purple);
 }
 
 .pretty {
-    background: linear-gradient(to right, #fe9035, #c97cbc, #9067e7, #3746fe);
+    background: linear-gradient(to right, var(--gttg-orange), var(--gttg-pink), var(--gttg-purple), var(--gttg-indigo));
 }
 
 /* toolbar */
 .navbar-custom {
-    background: linear-gradient(to right, #fe9035, #c97cbc, #9067e7, #3746fe);
+    background: linear-gradient(to right, var(--gttg-orange), var(--gttg-pink), var(--gttg-purple), var(--gttg-indigo));
 }
 
 .navbar-text {
@@ -197,7 +203,7 @@ body {
 img {
     width: 400px;
     height: 400px;
-    border: 5px solid linear-gradient(to right, #fe9035, #c97cbc, #9067e7, #3746fe);
+    border: 5px solid linear-gradient(to right, var(--gttg-orange), var(--gttg-pink), var(--gttg-purple), var(--gttg-indigo));
     border-radius: 10px;
     box-sizing: border-box;
 }
@@ -234,7 +240,7 @@ img {
 .button-29 {
     align-items: center;
     appearance: none;
-    background-image: linear-gradient(to right, #fe9035, #c97cbc, #9067e7, #3746fe);
+    background-image: linear-gradient(to right, var(--gttg-orange), var(--gttg-pink), var(--gttg-purple), var(--gttg-indigo));
     border: 0;
     border-radius: 6px;
     box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
