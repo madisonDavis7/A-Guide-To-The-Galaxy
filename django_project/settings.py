@@ -273,7 +273,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+STAR_RATINGS_WIDGET_TEMPLATE = 'star_ratings/widget.html'
 
 
 LOGGING = {
