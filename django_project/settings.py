@@ -74,13 +74,7 @@ INSTALLED_APPS = [
 	'crispy_forms',
 	'crispy_bootstrap5',
 	'django_extensions',
-<<<<<<< HEAD
 	'star_ratings',
-=======
-	'allauth_ui',
-	'widget_tweaks',
-	'slippers',
->>>>>>> 7169c37a3ef58b4213292fd830839dcb1980785e
 
 	# -- Allauth stuff --- #
 	'allauth',
