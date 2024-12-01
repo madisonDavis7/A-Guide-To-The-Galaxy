@@ -277,7 +277,7 @@ ALLAUTH_UI_THEME = 'starry'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+STAR_RATINGS_WIDGET_TEMPLATE = 'star_ratings/widget.html'
 
 
 LOGGING = {
