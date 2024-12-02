@@ -3,6 +3,7 @@ from .import views
 
 urlpatterns = [
     path('', views.planetary, name="planetary"),
+    path('tours/<int:pk>/')
     path('mercury/', views.mercury_page, name="mercury_page"),
     path('mars/', views.mars_page, name="mars_page"),
     path('neptune/', views.neptune_page, name="neptune_page"),
