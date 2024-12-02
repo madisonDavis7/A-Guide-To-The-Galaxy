@@ -51,6 +51,14 @@
     </div>
 </div>
 
+<div class="apod">
+    <h1>{{ apod_title }}</h1>
+
+    {% if apod_image_url %}
+        <img src="{{ apod_image_url }}" alt="Astronomy Picture of the Day" style="max-width: 100%; height: auto;">
+    {% endif %}
+</div>
+
 <h2>Meet The Developers</h2>
 <div class="centered">
     <div class="col">

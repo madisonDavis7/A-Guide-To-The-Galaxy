@@ -35,6 +35,7 @@ urlpatterns = [
 	path('stellar/', stellar, name='stellar'),
 	#path('', SignupView.as_view(), name='signup'),
 	path('ratings/', include('star_ratings.urls', namespace='ratings')),
+	path('', include('apod_app.urls')),
 
 ]
 
