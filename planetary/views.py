@@ -7,10 +7,7 @@ def planetary(request):
 def mercury_page(request):
     mercury_tour = get_object_or_404(PlanetaryTour, name="Mercury Tour")
 
-    return render(request, 'planetary/mercury_page.html', {
-        'tour': mercury_tour,
-        
-    })
+    return render(request, 'planetary/mercury_page.html', {'tour': mercury_tour, })
 
 def mars_page(request):
     mars_tour = get_object_or_404(PlanetaryTour, name="Mars Tour")
@@ -35,4 +32,4 @@ def kepler_page(request):
 def sedna_page(request):
     sedna_tour = get_object_or_404(PlanetaryTour, name="Sedna Tour")
 
-    return render(request, 'planetary/mars_page.html', {'tour': sedna_tour})
+    return render(request, 'planetary/sedna_page.html', {'tour': sedna_tour})
