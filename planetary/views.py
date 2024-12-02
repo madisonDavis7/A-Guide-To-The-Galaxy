@@ -1,9 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from .models import PlanetaryTour
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 
-def planetary(request):
-    return render(request, 'planetary/planetary.html')
+# def planetary(request):
+#     return render(request, 'planetary/planetary.html')
+
+
+class PlanetaryListView(ListView):
+	template_name = 'planetary/planetary.html'
+	model = PlanetaryTour
 
 # def mercury_page(request):
 #     mercury_tour = get_object_or_404(PlanetaryTour, name="Mercury Tour")

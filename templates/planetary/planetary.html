@@ -15,9 +15,21 @@
 <p class="intro-planetary">From gaseous giants of swirling gases, to terrestrial and rocky planets littered with craters, each body 
     provides its own unique features. Explore worlds unlike no other! </p>
 
+<div class="tour-grid">
+    {% for object in object_list %}
+        <div class="tour-item">
+            <img class="tour-image" src="">
+            <a href="{% url 'planetary_tour' pk=object.pk %}">{{ object.name }}</a>
+            <h3>{{ object.name }}</h3>
+        </div>
+    {% endfor %}
+<div>
+
+
+{%comment%}
 <div class="col-img">
     <div class="column">
-        <a href="{% url 'mercury_page' %}">
+        <a href="{% url 'tour' pk=planet.pk %}">
             <img src="{% static 'images/mercury.jpg' %}">
         </a>
         <h3>Mercury</h3>
@@ -73,5 +85,6 @@
         <p>It has a highly elliptical orbit</p>
     </div>
 </div>
+{%endcomment%}
 
 {% endblock %}

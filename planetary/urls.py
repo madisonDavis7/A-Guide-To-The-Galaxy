@@ -1,9 +1,12 @@
 from django.urls import path, include
 from .import views
 
+# app_name = 'planetary'
 urlpatterns = [
-    path('', views.planetary, name="planetary"),
-    path('tour/<int:pk>/', views.PlanetaryTourView.as_view())
+    path('', views.PlanetaryListView.as_view(), name="planetary"),
+    path('tour/<int:pk>/', views.PlanetaryTourView.as_view(), name='planetary_tour'),
+    
+
     # path('mercury/', views.mercury_page, name="mercury_page"),
     # path('mars/', views.mars_page, name="mars_page"),
     # path('neptune/', views.neptune_page, name="neptune_page"),
