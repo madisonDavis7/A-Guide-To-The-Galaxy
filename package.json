@@ -5,10 +5,13 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 
-		"build": "npm run-script build-allauth && python manage.py collectstatic --noinput",
+		"build": "npm run-script build-allauth && npm run-script compile-sass && python manage.py collectstatic --noinput",
 
 		"build-allauth": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --minify",
-		"build-allauth:watch": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --watch"
+		"build-allauth:watch": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --watch",
+
+		"compile-sass": "npx sass -I static/css static/css/style.sass static/css/style.css",
+		"compile-sass:watch": "npx sass --watch -I static/css static/css/style.sass static/css/style.css"
 	},
 	"repository": {
 		"type": "git",
@@ -31,7 +34,8 @@
 		"postcss-nested": "^5.0.6",
 		"postcss-simple-vars": "^6.0.3",
 		"rimraf": "^3.0.2",
-		"tailwindcss": "^3.4.4"
+		"tailwindcss": "^3.4.4",
+		"sass": "^1.25.0"
 	},
 	"dependencies": {
 		"daisyui": "^4.12.7"
