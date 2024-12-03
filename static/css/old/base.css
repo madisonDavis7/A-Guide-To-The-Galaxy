@@ -14,7 +14,9 @@ h2 {
 }
 
 h3 {
+    padding-top: 10px;
     color: white;
+    padding-bottom: 10px;
 }
 
 body {
@@ -55,6 +57,7 @@ body {
     font-size: 20px;
     font-weight: 4;
     color: var(--gttg-indigo);
+
 }
 
 .name {
@@ -87,13 +90,16 @@ body {
 .centered {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     padding-bottom: 5%;
 }
 
 .col {
     width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 2%;
 }
@@ -115,6 +121,8 @@ body {
     align-items: center;
     flex: 1;
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .column img {
@@ -124,14 +132,14 @@ body {
 }
 
 .column p {
-    margin-top: 10px;
     font-size: 14px;
     color: white;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .about-me {
-    text-align: center;
+    text-align: left;
     color: white;
     font-size: 20px;
 }
@@ -148,8 +156,8 @@ body {
 }
 
 .purple {
-    /* background-color: #9669e4; */
     background-color: var(--gttg-purple);
+
 }
 
 .pretty {
@@ -289,8 +297,99 @@ img {
     gap: 30px;
 }
 
+.button-inline-tour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-bottom: 5%;
+}
+
 /* sign up/ login */
 
 .form-text {
     color: white !important;
+}
+
+/* planetary and stellar app layouts */
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 15%;
+    margin-right: 15%;
+    gap: 40px;
+    margin-bottom: 5%;
+    border: 3px solid white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.planet-image {
+    width: 300px;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.info-text {
+    flex: 1;
+    text-align: left;
+    padding-right: 20px;
+    overflow-wrap: break-word;
+    font-size: 20px;
+}
+
+.box-title {
+    text-align: center;
+    color: #9067e7;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* ratings */
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding-bottom: 3%
+}
+
+/* messing with new planetary layout */
+.tour-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Create 3 equal-width columns */
+    gap: 20px;
+    /* Add space between the grid items */
+    margin-top: 30px;
+    margin-bottom: 3%;
+}
+
+.tour-item {
+    text-align: center;
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-item:hover {
+    transform: translateY(-10px);
+    /* Slight lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* messing with format for tours */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
 }

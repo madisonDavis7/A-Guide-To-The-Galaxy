@@ -157,11 +157,14 @@ h2 {
   transform: translateY(2px);
 }
 
-.button-inline {
+.button-inline, .button-inline-tour {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
+}
+.button-inline-tour {
+  padding-bottom: 5%;
 }
 
 .border {
@@ -217,6 +220,76 @@ img {
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 15%;
+  margin-right: 15%;
+  gap: 40px;
+  margin-bottom: 5%;
+  border: 3px solid white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.planet-image {
+  width: 300px;
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.info-text {
+  flex: 1;
+  text-align: left;
+  padding-right: 20px;
+  overflow-wrap: break-word;
+  font-size: 20px;
+}
+
+.box-title {
+  text-align: center;
+  color: #9067e7;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Create 3 equal-width columns */
+  gap: 20px;
+  /* Add space between the grid items */
+  margin-top: 30px;
+  margin-bottom: 3%;
+}
+
+.tour-item {
+  text-align: center;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #111;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tour-item:hover {
+  transform: translateY(-10px);
+  /* Slight lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=style.css.map */
