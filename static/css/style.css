@@ -296,20 +296,28 @@ img {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.profile-detail {
+.profiles {
+  margin-top: 3em;
+}
+.profiles-detail {
   max-width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
-.profile-detail > h2 {
-  margin-top: 2em;
+.profiles-detail > h2 {
+  margin-top: 1em;
   margin-bottom: 1em;
 }
-.profile-part {
+.profiles-part {
   margin-top: 2em;
 }
-.profile-part > h3 {
+.profiles-part > h3 {
   color: #ccc;
+}
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

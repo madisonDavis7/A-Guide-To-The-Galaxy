@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="profile-detail">
+<div class="profiles profiles-detail">
 	<h2>{{ profile_user.first_name }} {{ profile_user.last_name }}</h2>
 	
 	{% if object.real_account == user %}
@@ -16,23 +16,23 @@
 	</form>
 	{% endif %}
 	
-	<div class="profile-part">
+	<div class="profiles-part">
 		<h3>Bio</h3>
 		<p>{{ object.bio }}</p>
 	</div>
 	
-	<div class="profile-part">
+	<div class="profiles-part">
 		<h3>Home planet</h3>
 		<p>{{ object.get_home_planet_display }}</p>
 	</div>
 	
-	<div class="profile-part">
+	<div class="profiles-part">
 		<h3>Preferred Language</h3>
 		<p>{{ object.get_language_display }}</p>
 	</div>
 	
 	
-	<div class="profile-part">
+	<div class="profiles-part">
 		{% if object.real_account == user %}
 		<h3>Linked accounts</h3>
 		<ul>

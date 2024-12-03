@@ -1,17 +1,24 @@
 @use "global/colors"
 
 
-.profile
+.profiles
+	margin-top: 3em
 	&-detail
 		max-width: 50%
 		margin-left: auto
 		margin-right: auto
 	
 		&>h2
-			margin-top: 2em
+			margin-top: 1em
 			margin-bottom: 1em
 	&-part
 		margin-top: 2em
 
 		&>h3
 			color: colors.$almost-white
+	
+	&-grid
+		display: grid
+		// create 4 equal-width columns
+		grid-template-columns: repeat(4, 1fr)
+		gap: 20px
