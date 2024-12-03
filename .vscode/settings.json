@@ -1,0 +1,10 @@
+{
+	"liveSassCompile.settings.excludeList": [
+		"/**/node_modules/**",
+		"/.vscode/**",
+		"/static/css/parts/**"
+	],
+	"liveSassCompile.settings.includeItems": [
+		"/**/style.sass"
+	],
+}
