@@ -12,5 +12,8 @@ class HomepageView(TemplateView):
 class SignupView(TemplateView):
     template_name = 'signup.html'
 
+def planetary(request):
+    return render(request, 'planetary.html')
+
 #def stellar(request):
 #   return render(request, 'stellar.html')

@@ -19,11 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 # from . import views
 from .views import HomepageView, SignupView
-<<<<<<< HEAD
 from .views import planetary
-=======
-from .views import stellar
->>>>>>> 63b1da7355e1fa8c4ed713d0512886517cc6ca87
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
@@ -34,17 +30,10 @@ urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 
 	path('profiles/', include('profiles.urls')),
-	path('planetary/', include('planetary.urls')),
 	path('', HomepageView.as_view(), name='home'),
-<<<<<<< HEAD
 	path('planetary/', planetary, name='planetary'),
 	path('stellar/', include("stellar.urls")),
-=======
-	path('stellar/', stellar, name='stellar'),
->>>>>>> 63b1da7355e1fa8c4ed713d0512886517cc6ca87
 	#path('', SignupView.as_view(), name='signup'),
-	path('ratings/', include('star_ratings.urls', namespace='ratings')),
-
 ]
 
 
