@@ -21,7 +21,7 @@
 			<div class="card profiles-card" style="width: 18rem;">
 				{% comment %} <img class="card-img-top" src="https://placebear.com/g/300/500" alt="Card image cap"> {% endcomment %}
 				<div class="card-body profiles-card-body">
-					<h5 class="card-title">{{ object }}</h5>
+					<h5 class="card-title">{{ object.real_account.username }}</h5>
 					<h6 class="card-subtitle mb-2 text-muted">{{ object.real_account.first_name }} {{ object.real_account.last_name}}</h6>
 
 					<div class="profiles-card-info">
