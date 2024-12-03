@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+
 import markdown2
 from .models import PlanetaryTour
 from django.views.generic import DetailView, ListView
