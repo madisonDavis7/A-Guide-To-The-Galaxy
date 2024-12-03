@@ -74,6 +74,7 @@ INSTALLED_APPS = [
 	'crispy_forms',
 	'crispy_bootstrap5',
 	'django_extensions',
+	'star_ratings',
 	'allauth_ui',
 	'widget_tweaks',
 	'slippers',
@@ -88,6 +89,7 @@ INSTALLED_APPS = [
 	# -- Local apps -- #
 	# 'accounts',
 	'profiles',
+	'stellar',
 ]
 
 MIDDLEWARE = [
@@ -275,7 +277,7 @@ ALLAUTH_UI_THEME = 'starry'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+STAR_RATINGS_WIDGET_TEMPLATE = 'star_ratings/widget.html'
 
 
 LOGGING = {

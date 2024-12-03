@@ -10,8 +10,12 @@
     
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-  </head>
 
+    <!-- for ratings -->
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+  </head>
+  
   <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
@@ -28,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li><a href="{% url 'planetary' %}" class="nav-link px-2 link-light fst-italic" >Planetary</a></li>
-            <li><a href="{% url 'stellar' %}"class="nav-link px-2 link-light fst-italic">Stellar</a></li>
+            <li><a href="{% url 'stellar_home' %}"class="nav-link px-2 link-light fst-italic">Stellar</a></li>
           </ul>
           {% if user.is_authenticated %} 
           <div class="mr-auto">
