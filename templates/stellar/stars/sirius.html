@@ -1,0 +1,71 @@
+<!-- templates/planetary/kepler_page.html -->
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load ratings %}
+{% load static %}
+
+{% block content %}
+
+<h1>A Guide To Sirius</h1>
+
+<div class="center">
+    <h3 class="box-title">Star Details</h3>
+    <div class="info-item">
+        <img src="{% static 'images/kepler-location.jpg' %}" class="planet-image">
+        <div class="info-text">
+            <ul>
+                <li>  
+                    Sirius is a Main-Sequence star and the brightest star in Earth's night sky. 
+                </li>
+                <li>
+                    It is 8.6 Light-Years away from Earth's solar system. 
+                </li>
+                <li>
+                    It has surface temperature of 3,500 degrees Kelvin. 
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h3 class="box-title">About</h3>
+    <div class="info-item">
+        <img src="{% static 'images/kepler-about.jpg' %}" class="planet-image">
+        <div class="info-text">
+            <ul>
+                <li>
+                    Betelgeuse has a Mass of 3.282 x 10^31 kilograms and a Radius of 617.02249 million Kilometers. 
+                </li>
+                <li>
+                    With its mass and size it is approximately 700 times the size of Earth's star and 15 times more massive. If it were to replace the Earth's star it would stretch beyond the orbit of Jupiter.
+                </li>
+                <li>
+                    Its large size means that it is burning through its recources at an incredible rate. Despite being only 10 million years old, it is already nearing the end of its life span. 
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h3 class="box-title">Tour Info</h3>
+    <div class="info-item">
+        <img src="{% static 'images/kepler-tour.jpg' %}" class="planet-image">
+        <div class="info-text">
+            <ul>
+                <li>The length of the {{ tour.name }} is: {{ tour.length }} months</li>
+                <li>The total number of people that can register for this tour is: {{tour.num_people }}</li>
+                <li>For any questions about this tour or any others we offer please reach out. We are hapy to
+                    make any needed accomodations or answer any questions relevant to the services we offer.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h3 class="box-title">Tour Rating</h3>
+    <div class="rating">
+        {% ratings tour %}
+    </div>
+    
+    <div class="button-inline-tour">
+        <a class="button-29" href="{% url 'stellar' %}">Back</a>
+    </div>
+</div>
+
+{% endblock %}

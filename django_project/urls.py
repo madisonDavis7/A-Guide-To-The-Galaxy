@@ -30,13 +30,10 @@ urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 
 	path('profiles/', include('profiles.urls')),
-	path('planetary/', include('planetary.urls')),
 	path('', HomepageView.as_view(), name='home'),
 	path('planetary/', planetary, name='planetary'),
 	path('stellar/', include("stellar.urls")),
 	#path('', SignupView.as_view(), name='signup'),
-	path('ratings/', include('star_ratings.urls', namespace='ratings')),
-
 ]
 
 

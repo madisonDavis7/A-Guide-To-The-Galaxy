@@ -89,7 +89,7 @@ INSTALLED_APPS = [
 	# -- Local apps -- #
 	# 'accounts',
 	'profiles',
-	'planetary',
+	'stellar',
 ]
 
 MIDDLEWARE = [
