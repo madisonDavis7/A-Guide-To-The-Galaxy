@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+import markdown2
 from .models import PlanetaryTour
 from django.views.generic import DetailView, ListView
 
@@ -9,6 +10,25 @@ from django.views.generic import DetailView, ListView
 class PlanetaryListView(ListView):
 	template_name = 'planetary/planetary.html'
 	model = PlanetaryTour
+
+#class PlanetaryTourView(DetailView):
+#	template_name = 'planetary/tour.html'
+#	model = PlanetaryTour
+
+class PlanetaryTourView(DetailView):
+    template_name = 'planetary/tour.html'
+    model = PlanetaryTour
+
+    def get_object(self, queryset=None):
+        # Get the PlanetaryTour object
+        planetary_tour = super().get_object(queryset)
+
+        # Convert the Markdown fields to HTML using markdown2
+        planetary_tour.location_and_orbit_html = markdown2.markdown(planetary_tour.location_and_orbit)
+        planetary_tour.about_planet_html = markdown2.markdown(planetary_tour.about_planet)
+
+        return planetary_tour
+
 
 # def mercury_page(request):
 #     mercury_tour = get_object_or_404(PlanetaryTour, name="Mercury Tour")
@@ -41,6 +61,3 @@ class PlanetaryListView(ListView):
 #     return render(request, 'planetary/sedna_page.html', {'tour': sedna_tour})
 
 
-class PlanetaryTourView(DetailView):
-	template_name = 'planetary/tour.html'
-	model = PlanetaryTour

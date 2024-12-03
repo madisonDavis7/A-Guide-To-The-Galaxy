@@ -12,14 +12,14 @@
     <div class="info-item">
         {% comment %} <img src="{% static 'images/kepler-location.jpg' %}" class="planet-image"> {% endcomment %}
         <div class="info-text">
-            {{ object.location_and_orbit }}
+            <div>{{ object.location_and_orbit_html|safe }}</div>
         </div>
     </div>
     <h3 class="box-title">About</h3>
     <div class="info-item">
         {% comment %} <img src="{% static 'images/kepler-about.jpg' %}" class="planet-image"> {% endcomment %}
         <div class="info-text">
-            {{ object.about_planet }}
+            <div>{{ object.about_planet_html|safe }}</div>
         </div>
     </div>
     <h3 class="box-title">Tour Info</h3>
