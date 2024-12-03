@@ -8,6 +8,8 @@ class StarTour(models.Model):
     distance = models.CharField(max_length=100) #Distance in light years from Earth
     temp = models.CharField(max_length=100) #Surface Temperature of Star
 
+    home_image = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')
+
     image1 = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')
     image2 = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')
     image3 = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')
@@ -27,7 +29,8 @@ class StarTour(models.Model):
 class ConstellationTour(models.Model):
     name = models.CharField(max_length=100) #name of Star
     stars = models.CharField(max_length=100) #Notable stars within constellation
-    #starnum = models.CharField(max_length=10) #Number of stars in the constellation
+
+    home_image = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')
 
     image1 = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')
     image2 = models.ImageField(upload_to='static', default='static/stellar/constellations/BigDipper.jpg')

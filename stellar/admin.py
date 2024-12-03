@@ -8,6 +8,7 @@ class StarTourAdmin(admin.ModelAdmin):
         'type', 
         'distance', 
         'temp', 
+        'home image',
         'image1', 
         'image2', 
         'image3', 
@@ -23,6 +24,7 @@ class ConstellationTourAdmin(admin.ModelAdmin):
     list_display = (
         'name', 
         'stars', 
+        'home image',
         'image1', 
         'image2', 
         'image3', 
