@@ -12,7 +12,31 @@
     to the stars that make them up if you want a guide to the stars you're in the right place! </p>
 <p class="intro-planetary">Learn about the Stars of our galaxy and what makes them tick or, whether it be the stars that compose them or the folklore that created them, explore the nature of Earth's constellations! </p>
 
-<div class="col-img">
+
+<div class="tour-grid">
+    {% for star in startours %}
+        <div class="tour-item">
+            <a href="{% url 'star_tour' pk=star.pk %}">
+                <img class="tour-image" src="{{ star.image.url }}" alt="{{ star.name }} Image">
+            </a>
+            <h3>{{ star.name }}</h3>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="tour-grid">
+    {% for const in constellationtours %}
+        <div class="tour-item">
+            <a href="{% url 'constellation_tour' pk=const.pk %}">
+                <img class="tour-image" src="{{ const.home_image.url }}" alt="{{ const.name }} Image">
+            </a>
+            <h3>{{ const.name }}</h3>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% comment %} <div class="col-img">
     <div class="column">
         <a href='stars/1/'><img src="{% static 'images/stars/Betelgeuse.jpg' %}"></a>
         <h3>Betelgeuse</h3>
@@ -51,6 +75,6 @@
         <p>Takes its name from Greek Mythology<p/>
         <p>Contains two of the brightest stars in Earth's night sky!</p>
     </div>
-</div>
+</div> {% endcomment %}
 
 {% endblock %}
