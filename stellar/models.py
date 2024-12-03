@@ -16,6 +16,8 @@ class StarTour(models.Model):
     about2 = models.CharField(max_length=200) #Second about bullet
     about3 = models.CharField(max_length=200) #Third  about bullet
 
+    link = models.CharField(max_length=100, default='none') #Link to NASA page
+
     length = models.PositiveIntegerField() #length in days
     num_people = models.PositiveIntegerField() #num of people who can go
 
@@ -34,6 +36,8 @@ class ConstellationTour(models.Model):
     about1 = models.CharField(max_length=200) #First  about bullet
     about2 = models.CharField(max_length=200) #Second about bullet
     about3 = models.CharField(max_length=200) #Third  about bullet
+
+    link = models.CharField(max_length=100, default='none') #Link to NASA page
 
     length = models.PositiveIntegerField() #length in days
     num_people = models.PositiveIntegerField() #num of people who can go
