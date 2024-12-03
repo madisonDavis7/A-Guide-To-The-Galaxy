@@ -20,6 +20,8 @@ from django.conf import settings
 # from . import views
 from .views import HomepageView, SignupView
 from .views import stellar
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
@@ -37,7 +39,7 @@ urlpatterns = [
 	path('ratings/', include('star_ratings.urls', namespace='ratings')),
 	path('', include('apod_app.urls')),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:
