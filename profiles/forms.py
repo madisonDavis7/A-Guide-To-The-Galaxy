@@ -8,8 +8,8 @@ class SpaceTravelerProfileForm(ModelForm):
 		model = SpaceTravelerProfile
 		fields = [
 			'home_planet', 
-			'age', 
 			'language', 
+			'age', 
 			'bio', 
 			'security_question', 
 			'security_answer',
