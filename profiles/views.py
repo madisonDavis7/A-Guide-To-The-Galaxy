@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import (
     UserPassesTestMixin, # extra conditions that, if failed, throw a 403
 )
 from django.contrib.auth.models import User
+from django.db.models.base import Model as Model
 from django.forms import BaseModelForm
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -93,6 +94,12 @@ class SpaceTravelerProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 class SpaceTravelerProfileViewView(DetailView):
 	model = SpaceTravelerProfile
 	template_name = 'profiles/view.html'
+
+	def get_context_data(self, **kwargs) -> dict:
+		context = super().get_context_data(**kwargs)
+		user: User = self.get_object(self.queryset).real_account #type:ignore
+		context['profile_user'] = user
+		return context
 
 
 

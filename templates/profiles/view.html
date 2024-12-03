@@ -7,32 +7,40 @@
 
 {% block content %}
 
-<h2>{{ user.first_name }} {{ user.last_name }}</h2>
+<div class="profile-detail">
+	<h2>{{ profile_user.first_name }} {{ profile_user.last_name }}</h2>
+	
+	{% if object.real_account == user %}
+	<form action="{% url "profiles:update" pk=object.pk %}" method="post">{% csrf_token %}
+		<button type="submit" class="btn btn-sm btn-primary float-end">Update profile</button>
+	</form>
+	{% endif %}
+	
+	<div class="profile-part">
+		<h3>Bio</h3>
+		<p>{{ object.bio }}</p>
+	</div>
+	
+	<div class="profile-part">
+		<h3>Home planet</h3>
+		<p>{{ object.get_home_planet_display }}</p>
+	</div>
+	
+	<div class="profile-part">
+		<h3>Preferred Language</h3>
+		<p>{{ object.get_language_display }}</p>
+	</div>
+	
+	
+	<div class="profile-part">
+		{% if object.real_account == user %}
+		<h3>Linked accounts</h3>
+		<ul>
+			<li>{{ user.username }} - local account</li>
+		</ul>
+		{% endif %}
+	</div>
+</div>
 
-{% if object.real_account == user %}
-<ul>
-	<li><a href="{% url "profiles:update" pk=object.pk %}">Edit profile</a></li>
-</ul>
-{% endif %}
-
-<h3>Bio</h3>
-<p>{{ object.bio }}</p>
-
-<h3>Home planet</h3>
-<p>{{ object.get_home_planet_display }}</p>
-
-<h3>Preferred Language</h3>
-<p>{{ object.get_language_display }}</p>
-
-{% comment %} <h3>Preferred Language</h3>
-<p>{{ object.language }}</p>
-
-<h3>Preferred Language</h3>
-<p>{{ object.language }}</p> {% endcomment %}
-
-<h3>Linked accounts</h3>
-<ul>
-	<li>{{ user.username }} - local account</li>
-</ul>
 
 {% endblock content %}
