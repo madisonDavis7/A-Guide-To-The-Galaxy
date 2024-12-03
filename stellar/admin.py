@@ -8,10 +8,13 @@ class StarTourAdmin(admin.ModelAdmin):
         'type', 
         'distance', 
         'temp', 
-        'length', 
+        'image1', 
+        'image2', 
+        'image3', 
         'about1',
         'about2',
         'about3',
+        'length', 
         'num_people')
     
 class ConstellationTourAdmin(admin.ModelAdmin):
@@ -20,10 +23,13 @@ class ConstellationTourAdmin(admin.ModelAdmin):
         'name', 
         'stars', 
         #'starnum',
-        'length', 
+        'image1', 
+        'image2', 
+        'image3', 
         'about1',
         'about2',
         'about3',
+        'length', 
         'num_people')
 
 admin.site.register(StarTour)
