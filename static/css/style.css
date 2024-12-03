@@ -104,6 +104,10 @@ h2 {
   margin-left: 1em;
 }
 
+.form-text {
+  color: white !important;
+}
+
 .dropdown-menu {
   background-color: white;
   border-color: black;
