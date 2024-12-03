@@ -11,9 +11,7 @@
 	<h2>{{ profile_user.first_name }} {{ profile_user.last_name }}</h2>
 	
 	{% if object.real_account == user %}
-	<form action="{% url "profiles:update" pk=object.pk %}" method="post">{% csrf_token %}
-		<button type="submit" class="btn btn-sm btn-primary float-end">Update profile</button>
-	</form>
+		<a href="{% url "profiles:update" pk=object.pk %}" class="btn btn-sm btn-primary float-end">Update profile</a>
 	{% endif %}
 	
 	<div class="profiles-part">
