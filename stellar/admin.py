@@ -14,6 +14,7 @@ class StarTourAdmin(admin.ModelAdmin):
         'about1',
         'about2',
         'about3',
+        'link',
         'length', 
         'num_people')
     
@@ -22,13 +23,13 @@ class ConstellationTourAdmin(admin.ModelAdmin):
     list_display = (
         'name', 
         'stars', 
-        #'starnum',
         'image1', 
         'image2', 
         'image3', 
         'about1',
         'about2',
         'about3',
+        'link',
         'length', 
         'num_people')
 
