@@ -47,6 +47,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4$6@5&r4%kex2%me935-8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
 
+
 ALLOWED_HOSTS = [
 	'localhost',
 	'127.0.0.1',
@@ -91,6 +92,8 @@ INSTALLED_APPS = [
 	'profiles',
 	'planetary',
 	'stellar',
+	'apod_app',
+
 ]
 
 MIDDLEWARE = [

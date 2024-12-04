@@ -33,7 +33,7 @@ urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 
 	path('profiles/', include('profiles.urls')),
-	path('', HomepageView.as_view(), name='home'),
+	#path('', HomepageView.as_view(), name='home'),
 	path('planetary/', planetary, name='planetary'),
 	#path('planetary/', include("planetary.urls")),
 	path('stellar/', include("stellar.urls")),

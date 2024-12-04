@@ -28,7 +28,7 @@
             <img src="{% static 'images/home/mercury.jpg' %}">
         </div>
         <div class="slide">
-            <img src="{% static 'images/home/crab.jpg' %}">
+            <img src="{% static 'images/home/jupiter.jpg' %}">
         </div>
         <div class="slide">
             <img src="{% static 'images/home/mars.png' %}">
@@ -51,15 +51,27 @@
     </div>
 </div>
 
-{% comment %}
-<div class="apod">
-    <h1>{{ apod_title }}</h1>
+<h2> Astronomy Picture of The Day</h2>
 
-    {% if apod_image_url %}
-        <img src="{{ image_url }}" alt="Astronomy Picture of the Day" style="max-width: 100%; height: auto;">
-    {% endif %}
+<div>
+    <h3 class="apod_title">{{ title }}</h3>
+    <p class="apod_date">{{ date }}</p>
+    <div class="apod_img"><img src="{{ url }}" alt="{{ title }}"></div>
 </div>
 
+
+
+{% comment %}
+<div class="apod">
+    <h1>{{ title }}</h1>
+    
+    <!-- Display the image, whether it's from NASA or a placeholder -->
+    <img src="{{ daily_image }}" alt="NASA Image of the Day">
+    
+    <p>{{ explanation }}</p>
+</div>
+
+{% comment %}
 <div>
     {% if error_message %}
         <p>{{ error_message }}</p>

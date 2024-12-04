@@ -25,29 +25,39 @@ h2 {
   max-height: 120px;
   width: auto;
 }
+
 @media (max-width: 768px) {
   .logo {
     max-height: 40px;
   }
 }
 
-.person, .person3, .person2, .person1 {
+.person,
+.person3,
+.person2,
+.person1 {
   font-size: 40px;
   font-weight: 4;
   text-align: center;
   padding: 10px 20px;
 }
+
 .person1 {
   color: #fe9035;
 }
+
 .person2 {
   color: #9067e7;
 }
+
 .person3 {
   color: #3746fe;
 }
 
-.about-me, .intro, .about, .intro-planetary {
+.about-me,
+.intro,
+.about,
+.intro-planetary {
   text-align: center;
   font-size: 20px;
 }
@@ -89,17 +99,23 @@ h2 {
   color: white;
 }
 
-.pretty, .navbar-custom {
+.pretty,
+.navbar-custom {
   background: linear-gradient(to right, #fe9035, #c97cbc, #9067e7, #3746fe);
 }
 
-.navbar-text, .navbar-text-lighter, .navbar-text-subtitle {
+.navbar-text,
+.navbar-text-lighter,
+.navbar-text-subtitle {
   color: white;
   font-weight: 700;
 }
-.navbar-text-lighter, .navbar-text-subtitle {
+
+.navbar-text-lighter,
+.navbar-text-subtitle {
   font-weight: 400;
 }
+
 .navbar-text-subtitle {
   margin-left: 1em;
 }
@@ -112,6 +128,7 @@ h2 {
   background-color: white;
   border-color: black;
 }
+
 .dropdown-item:active {
   color: white !important;
 }
@@ -161,12 +178,14 @@ h2 {
   transform: translateY(2px);
 }
 
-.button-inline, .button-inline-tour {
+.button-inline,
+.button-inline-tour {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
 }
+
 .button-inline-tour {
   padding-bottom: 5%;
 }
@@ -203,7 +222,8 @@ img {
   box-sizing: border-box;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -217,7 +237,9 @@ img {
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
-.prev:hover, .next:hover {
+
+.prev:hover,
+.next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -297,3 +319,23 @@ img {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+/* trying to get api to work*/
+.apod_title {
+  color: white;
+  text-align: center;
+}
+
+.apod_date {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+.apod_img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5%;
+
+}
