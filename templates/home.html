@@ -18,6 +18,12 @@
     <div class="button-inline">
         <a class="button-29" href="{% url 'account_signup' %}">Sign Up</a>
     </div>
+{% elif not profile.pk %}
+    <h2>Create your profile</h2>
+    <p class="centered pb-0">Welcome, {{ user.username }}! It looks like you haven't made your profile yet. Let's fix that!</p>
+    <div class="button-inline mb-4">
+        <a href="{% url 'profiles:create' %}" class="button-29">Create Profile</a>
+    </div>
 {% endif %}
 
 <h2>Explore What Space Has To Offer!</h2>

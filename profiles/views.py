@@ -44,7 +44,13 @@ class SpaceTravelerProfileCreateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 		"""
 		When the currently signed-in user has a profile already, just redirect them to profiles:update instead.
 		"""
-		return redirect('profiles:update', pk=SpaceTravelerProfile.objects.get(real_account=self.request.user).pk)
+		return redirect(
+			'profiles:update',
+			kwargs={
+				'pk': SpaceTravelerProfile.objects.get(real_account=self.request.user).pk
+			}
+		)
+		# return redirect('profiles:update', pk=SpaceTravelerProfile.objects.get(real_account=self.request.user).pk)
 
 
 	# the args here are kinda fucked, but it's worked so far, so it's probably fine

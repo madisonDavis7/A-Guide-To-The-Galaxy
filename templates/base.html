@@ -51,12 +51,16 @@
                   <li><a class="dropdown-item link-dark" href="{% url 'account_change_password' %}">Change password</a></li>
                   <li><hr class="dropdown-divider"></li>
                   
-                  <li><a href="{% url 'profiles:view' pk=profile.pk %}" class="dropdown-item link-dark">Profile</a></li>
+                  {% if profile.pk %}
+                    <li><a href="{% url 'profiles:view' pk=profile.pk %}" class="dropdown-item link-dark">Profile</a></li>
+                  {% else %}
+                    <li><a href="{% url 'profiles:create' %}" class="dropdown-item link-dark fw-bold fst-italic">Create profile!</a></li>
+                  {% endif %}
                   <li><hr class="dropdown-divider"></li>
                   
                   {% if user.is_superuser %}
-                  <li><a href="{% url "admin:index" %}" class="dropdown-item link-dark">Django Admin</a></li>
-                  <li><hr class="dropdown-divider"></li>
+                    <li><a href="{% url "admin:index" %}" class="dropdown-item link-dark">Django Admin</a></li>
+                    <li><hr class="dropdown-divider"></li>
                   {% endif %}
 
                   <li><a href="{% url "account_logout" %}" class="dropdown-item link-dark">Logout</a></li>
