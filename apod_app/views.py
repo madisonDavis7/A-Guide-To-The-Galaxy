@@ -1,42 +1,41 @@
 import requests
 from django.shortcuts import render
+from django.conf import settings
 
-def apod_view(request):
-    api_key = 'xgbprF9SyPJs5cFNUXfbeQi8A7F2yVFZYIg2xcxw'  
+def home(request):
+    # Set the NASA API key from settings.py
+    api_key = settings.NASA_API_KEY
     url = f'https://api.nasa.gov/planetary/apod?api_key={api_key}'
 
-    # Make the GET request to the NASA API
-    response = requests.get(url)
-
-    # Check if the response is successful
-    if response.status_code == 200:
+    # Fetch the data from NASA API
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # This will raise an exception for bad HTTP responses (e.g., 404 or 500)
         data = response.json()
 
-        # Extract data from the response
-        apod_image_url = data['url']
-        apod_title = data['title']
-        apod_description = data['explanation']
-        media_type = data['media_type']
+        # Extract image or video URL and metadata from the response
+        image_url = data.get('url')
+        media_type = data.get('media_type')  # This could be 'image' or 'video'
+        title = data.get('title')
+        explanation = data.get('explanation')
 
-        # Add the print statement to output the image URL
-        print(f"APOD Image URL: {apod_image_url}")
-
+        # If it's a video, use the same image URL
         if media_type == 'video':
-            apod_image_url = None  # Set to None if it's a video
-            apod_video_url = data['url'] 
-        else:
-            apod_video_url = None
-    else:
-        apod_image_url = None
-        apod_video_url = None
-        apod_title = "Error"
-        apod_description = "Unable to fetch Astronomy Picture of the Day."
+            image_url = data.get('hdurl', image_url)  # Use hdurl if it's available for videos
 
-    # Pass data to template
-    return render(request, 'apod_app/apod.html', {
-        'apod_image_url': apod_image_url,
-        'apod_video_url': apod_video_url,
-        'apod_title': apod_title,
-        'apod_description': apod_description,
-    })
+        # Pass the data to the template context
+        context = {
+            'image_url': image_url,
+            'media_type': media_type,
+            'title': title,
+            'explanation': explanation,
+        }
+
+    except requests.exceptions.RequestException as e:
+        # In case of an error, you can pass an error message to the template
+        context = {
+            'error_message': 'Could not fetch NASA Picture of the Day. Please try again later.',
+        }
+
+    return render(request, 'home.html', context)
 

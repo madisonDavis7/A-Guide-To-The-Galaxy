@@ -305,3 +305,5 @@ LOGGING = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+NASA_API_KEY = 'xgbprF9SyPJs5cFNUXfbeQi8A7F2yVFZYIg2xcxw'
