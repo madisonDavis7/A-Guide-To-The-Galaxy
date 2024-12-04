@@ -6,10 +6,13 @@ from django.contrib.auth.mixins import (
 )
 from django.contrib.auth.models import User
 from django.db.models.base import Model as Model
+from django.core.exceptions import ObjectDoesNotExist
 from django.forms import BaseModelForm
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
+
+from allauth.socialaccount.models import SocialAccount
 
 from .forms import SpaceTravelerProfileForm
 from .models import SpaceTravelerProfile
@@ -117,8 +120,18 @@ class SpaceTravelerProfileViewView(DetailView):
 
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
+		# get the user associated with this profile
 		user = self.this_object.real_account
 		context['profile_user'] = user
+
+		# get the social account associated with this profile, if there is one
+		try:
+			social_account = SocialAccount.objects.get(user=user.pk)
+		except ObjectDoesNotExist:
+			social_account = None
+		finally:
+			context['social_account'] = social_account
+
 		return context
 
 

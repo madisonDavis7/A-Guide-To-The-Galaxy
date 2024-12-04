@@ -35,6 +35,9 @@
 		<h3>Linked accounts</h3>
 		<ul>
 			<li>{{ user.username }} - local account</li>
+			{% if social_account %}
+				<li>{{ user.username }} - {{ social_account.provider|title }}</li>
+			{% endif %}
 		</ul>
 		{% endif %}
 	</div>
