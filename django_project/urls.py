@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 # from . import views
-from .views import HomepageView, SignupView
+from .views import HomepageView
 from .views import planetary
 #from .views import stellar
 from django.conf.urls.static import static
