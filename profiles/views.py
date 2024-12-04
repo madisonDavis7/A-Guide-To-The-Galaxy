@@ -121,7 +121,7 @@ class SpaceTravelerProfileViewView(DetailView):
 	def get_context_data(self, **kwargs) -> dict:
 		context = super().get_context_data(**kwargs)
 		# get the user associated with this profile
-		user = self.this_object.real_account
+		user: User = self.this_object.real_account #type:ignore
 		context['profile_user'] = user
 
 		# get the social account associated with this profile, if there is one
