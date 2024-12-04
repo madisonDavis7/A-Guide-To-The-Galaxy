@@ -20,7 +20,6 @@
         <div class="tour-item">
             <a href="{% url 'planetary_tour' pk=object.pk %}">
                 <img class="tour-image" src="{{ object.image.url }}" alt="{{ object.name }} Image">
-                {% comment %} <a href="{% url 'planetary_tour' pk=object.pk %}">{{ object.name }}</a> {% endcomment %}
             </a>
             <h3>{{ object.name }}</h3>
         </div>
