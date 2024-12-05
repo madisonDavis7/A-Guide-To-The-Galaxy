@@ -5,10 +5,14 @@ from django.contrib.auth.mixins import (
     UserPassesTestMixin, # extra conditions that, if failed, throw a 403
 )
 from django.contrib.auth.models import User
+from django.db.models.base import Model as Model
+from django.core.exceptions import ObjectDoesNotExist
 from django.forms import BaseModelForm
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
+
+from allauth.socialaccount.models import SocialAccount
 
 from .forms import SpaceTravelerProfileForm
 from .models import SpaceTravelerProfile
@@ -43,7 +47,13 @@ class SpaceTravelerProfileCreateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 		"""
 		When the currently signed-in user has a profile already, just redirect them to profiles:update instead.
 		"""
-		return redirect('profiles:update', pk=SpaceTravelerProfile.objects.get(real_account=self.request.user).pk)
+		return redirect(
+			'profiles:update',
+			kwargs={
+				'pk': SpaceTravelerProfile.objects.get(real_account=self.request.user).pk
+			}
+		)
+		# return redirect('profiles:update', pk=SpaceTravelerProfile.objects.get(real_account=self.request.user).pk)
 
 
 	# the args here are kinda fucked, but it's worked so far, so it's probably fine
@@ -75,7 +85,7 @@ class SpaceTravelerProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 	form_class = SpaceTravelerProfileForm
 	login_url = settings.LOGIN_URL
 
-	success_url = reverse_lazy('home')
+	# success_url = reverse_lazy('home')
 	template_name = 'profiles/update.html'
 
 	permission_denied_message = "You cannot edit other user's profiles."
@@ -83,16 +93,46 @@ class SpaceTravelerProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, Ac
 	# def handle_no_permission(self):
 	# 	return redirect('home')
 
+	@property
+	def this_object(self) -> SpaceTravelerProfile:
+		return super().get_object(self.get_queryset()) #type:ignore
+
 	def test_func(self, *args, **kwargs) -> bool:
 		"""Function used by UserPassesTestMixin. Used to verify ownership of the profile to update is of the user."""
 		# return super().test_func()
-		thisModel = super().get_object(*args, **kwargs)
-		return thisModel.real_account == self.request.user #type:ignore
+		# thisModel = super().get_object(*args, **kwargs)
+		return self.this_object.real_account == self.request.user
+	
+	def get_success_url(self) -> str:
+		return reverse(
+			'profiles:view',
+			kwargs = { 'pk': self.this_object.pk }
+		)
 
 
 class SpaceTravelerProfileViewView(DetailView):
 	model = SpaceTravelerProfile
 	template_name = 'profiles/view.html'
+
+	@property
+	def this_object(self) -> SpaceTravelerProfile: 
+		return super().get_object(self.get_queryset()) #type:ignore
+
+	def get_context_data(self, **kwargs) -> dict:
+		context = super().get_context_data(**kwargs)
+		# get the user associated with this profile
+		user: User = self.this_object.real_account #type:ignore
+		context['profile_user'] = user
+
+		# get the social account associated with this profile, if there is one
+		try:
+			social_account = SocialAccount.objects.get(user=user.pk)
+		except ObjectDoesNotExist:
+			social_account = None
+		finally:
+			context['social_account'] = social_account
+
+		return context
 
 
 
