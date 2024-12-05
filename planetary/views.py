@@ -8,34 +8,33 @@ from django.views.generic import DetailView, ListView
 
 class PlanetaryListView(ListView):
     model = PlanetaryTour
-    template_name = 'planetary/planetary.html'
+    template_name = "planetary/all.html"
     context_object_name = 'planetary_tours'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print("Context:", context)  # This should print the context in your terminal
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     print("Context:", context)  # This should print the context in your terminal
+    #     return context
 
-    def get_queryset(self):
-        queryset = PlanetaryTour.objects.all()
-        print("Queryset:", queryset)  # This should print the list of PlanetaryTour objects
-        return queryset
-'''
-class PlanetaryListView(ListView):
-    model = PlanetaryTour
-    template_name = 'planetary.html'  
-    context_object_name = 'planetary_tours'  
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print("Context:", context)
-        return context
+    # def get_queryset(self):
+    #     return PlanetaryTour.objects.order_by('pk')
     
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        print(queryset)
-        return queryset
-'''
+
+# class PlanetaryListView(ListView):
+#     model = PlanetaryTour
+#     template_name = 'planetary.html'  
+#     context_object_name = 'planetary_tours'  
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         print("Context:", context)
+#         return context
+    
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         print(queryset)
+#         return queryset
+
 
 class PlanetaryTourView(DetailView):
     template_name = 'planetary/tour.html'

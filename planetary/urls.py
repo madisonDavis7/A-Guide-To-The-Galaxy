@@ -1,11 +1,11 @@
 from django.urls import path
 from .views import PlanetaryListView, PlanetaryTourView
 
-# app_name = 'planetary'
+app_name = 'planetary'
 urlpatterns = [
-    path('', PlanetaryListView.as_view(), name="planetary_list"),
-    path('planetary/tours/<int:pk>/', PlanetaryTourView.as_view(), name="planetary_tour_detail"),
-
+    path('', PlanetaryListView.as_view(), name="list"),
+    path('planetary/tours/<int:pk>/', PlanetaryTourView.as_view(), name="tour_detail"),
+]
 
     #path('', views.PlanetaryListView.as_view(), name="planetary_list"),
     #path('tour/<int:pk>/', views.PlanetaryTourView.as_view(), name='planetary_tour'),
@@ -25,4 +25,3 @@ urlpatterns = [
     # path('kepler/', views.kepler_page, name="kepler_page"),
     # path('sedna/', views.sedna_page, name="sedna_page"),
 
-]

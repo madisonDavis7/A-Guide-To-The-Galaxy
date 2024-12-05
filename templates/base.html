@@ -31,7 +31,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><a href="{% url 'planetary' %}" class="nav-link px-2 link-light fst-italic" >Planetary</a></li>
+            <li><a href="{% url 'planetary:list' %}" class="nav-link px-2 link-light fst-italic" >Planetary</a></li>
             <li><a href="{% url 'stellar_home' %}"class="nav-link px-2 link-light fst-italic">Stellar</a></li>
           </ul>
           {% if user.is_authenticated %} 

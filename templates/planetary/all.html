@@ -18,7 +18,7 @@
 <div class="tour-grid">
     {% for tour in planetary_tours %}
         <div class="tour-item">
-            <a href="{% url 'planetary_tour_detail' pk=tour.pk %}">
+            <a href="{% url 'planetary:tour_detail' pk=tour.pk %}">
                 <img class="tour-image" src="{{ tour.image.url }}" alt="{{ tour.name }} Image">
             </a>
             <h3>{{ tour.name }}</h3>
