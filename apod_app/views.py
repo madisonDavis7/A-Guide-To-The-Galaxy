@@ -72,7 +72,8 @@ def home(request):
     # Check if the URL is a video
     if not img_url.endswith(('.jpg', '.jpeg', '.png', '.gif')):  # Not an image
         # Use a static fallback image if it's a video
-        img_url = static('images/fallback.jpg')  # This should be the path to your fallback image in static/images/
+        img_url = static('images/fallback.jpg')  
+        title = "Bode's Galaxy"
 
     # Format the date for readability
     date_object = datetime.strptime(nasa_data.get("date", "2024-01-01"), "%Y-%m-%d")
