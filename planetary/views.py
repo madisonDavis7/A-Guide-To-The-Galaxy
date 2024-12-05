@@ -6,14 +6,36 @@ from django.views.generic import DetailView, ListView
 # def planetary(request):
 #     return render(request, 'planetary/planetary.html')
 
-
 class PlanetaryListView(ListView):
-	template_name = 'planetary/planetary.html'
-	model = PlanetaryTour
+    model = PlanetaryTour
+    template_name = 'planetary/planetary.html'
+    context_object_name = 'planetary_tours'
 
-#class PlanetaryTourView(DetailView):
-#	template_name = 'planetary/tour.html'
-#	model = PlanetaryTour
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print("Context:", context)  # This should print the context in your terminal
+        return context
+
+    def get_queryset(self):
+        queryset = PlanetaryTour.objects.all()
+        print("Queryset:", queryset)  # This should print the list of PlanetaryTour objects
+        return queryset
+'''
+class PlanetaryListView(ListView):
+    model = PlanetaryTour
+    template_name = 'planetary.html'  
+    context_object_name = 'planetary_tours'  
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print("Context:", context)
+        return context
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        print(queryset)
+        return queryset
+'''
 
 class PlanetaryTourView(DetailView):
     template_name = 'planetary/tour.html'

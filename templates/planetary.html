@@ -16,76 +16,18 @@
     provides its own unique features. Explore worlds unlike no other! </p>
 
 <div class="tour-grid">
-    {% for object in object_list %}
+    {% for tour in planetary_tours %}
         <div class="tour-item">
-            <a href="{% url 'planetary_tour' pk=object.pk %}">
-                <img class="tour-image" src="{{ object.image.url }}" alt="{{ object.name }} Image">
+            <a href="{% url 'planetary_tour_detail' pk=tour.pk %}">
+                <img class="tour-image" src="{{ tour.image.url }}" alt="{{ tour.name }} Image">
             </a>
-            <h3>{{ object.name }}</h3>
+            <h3>{{ tour.name }}</h3>
         </div>
+    {% empty %}
+        <li>No planetary tours found</li>
     {% endfor %}
 </div>
 
 {% endblock %}
 
-{%comment%}
-<div class="col-img">
-    <div class="column">
-        <a href="{% url 'tour' pk=planet.pk %}">
-            <img src="{% static 'images/mercury.jpg' %}">
-        </a>
-        <h3>Mercury</h3>
-
-        <p>Largest temperature fluctuations in the solary system</p>
-        <p>Covered in craters and ridges</p>
-    </div>
-    <div class="column">
-        <a href="{% url 'mars_page' %}">
-            <img src="{% static 'images/mars.png' %}">
-        </a>
-        <h3>Mars</h3>
-
-        <p>Red dust coating the surface </p>
-        <p>Mar's gravity is about 62% that on Earth</p>
-    </div>
-    <div class="column">
-        <a href="{% url 'neptune_page' %}">
-            <img src="{% static 'images/neptune.jpg' %}">
-        </a>
-        <h3>Neptune</h3>
-
-        <p>Highest winds of all the planets</p>
-        <p>Beautiful blue atmosphere from the methane gas</p>
-    </div>
-</div>
-<div class="col-img">
-    <div class="column">
-        <a href="{% url 'pluto_page' %}">
-            <img src="{% static 'images/pluto.jpg' %}">
-        </a>
-        <h3>Pluto</h3>
-        
-        <p>Located in the Kuiper Belt</p>
-        <p>Has five known moons</p>
-    </div>
-    <div class="column">
-        <a href="{% url 'kepler_page' %}">
-            <img src="{% static 'images/kepler186f.jpg' %}">
-        </a>
-        <h3>Kepler 186f</h3>
-        
-        <p>Found in the constellation Cygnus</p>
-        <p>Has an orbital period of 130 Earth days</p>
-    </div>
-    <div class="column">
-        <a href="{% url 'sedna_page' %}">
-            <img src="{% static 'images/sedna.jpg' %}">
-        </a>
-        <h3>Sedna</h3>
-
-        <p>Most distant object in our solar system</p>
-        <p>It has a highly elliptical orbit</p>
-    </div>
-</div>
-{%endcomment%}
 
