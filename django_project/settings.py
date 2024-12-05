@@ -54,6 +54,7 @@ SECRET_KEY = env.str('SECRET_KEY', default='django-insecure-4$6@5&r4%kex2%me935-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', True)
 
+
 ALLOWED_HOSTS = [
 	'localhost',
 	'127.0.0.1',
@@ -81,10 +82,10 @@ INSTALLED_APPS = [
 	'crispy_forms',
 	'crispy_bootstrap5',
 	'django_extensions',
-	'star_ratings',
 	'allauth_ui',
 	'widget_tweaks',
 	'slippers',
+	'star_ratings',
 
 	# -- Allauth stuff --- #
 	'allauth',
@@ -96,7 +97,10 @@ INSTALLED_APPS = [
 	# -- Local apps -- #
 	# 'accounts',
 	'profiles',
+	'planetary',
 	'stellar',
+	'apod_app',
+
 ]
 
 MIDDLEWARE = [
@@ -308,3 +312,8 @@ LOGGING = {
         },
     },
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+NASA_API_KEY = 'xgbprF9SyPJs5cFNUXfbeQi8A7F2yVFZYIg2xcxw'
