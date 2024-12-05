@@ -102,10 +102,3 @@ class NewProfileTests(TestCase):
 				getattr(allProfileObjects[0], k),
 				changeData[k]
 			)
-
-
-		
-
-
-		
-		
