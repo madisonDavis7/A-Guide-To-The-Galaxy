@@ -10,14 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import os
+# import os
+from environs import Env
 from pathlib import Path
-
 import yaml
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-FORCE_SCRIPT_NAME = '/' + os.environ.get('SITE_NAME', '') if os.environ.get('SITE_NAME', '') != '' else ''
+FORCE_SCRIPT_NAME = (
+	'/' + env.str('SITE_NAME', default='') 
+	if env.str('SITE_NAME', default='') != '' 
+	else ''
+)
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,11 +48,11 @@ except FileNotFoundError:
 # del key
 
 # SECURITY WARNING: keep the secret key used in production secret! This will default to this insecure key if the SECRET_KEY variable isn't set in the environment.
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#')
+SECRET_KEY = env.str('SECRET_KEY', default='django-insecure-4$6@5&r4%kex2%me935-8q^=ep=ufnyv89&i7@dx^68924o2q#')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = env.bool('DEBUG', True)
 
 ALLOWED_HOSTS = [
 	'localhost',
@@ -136,9 +143,9 @@ DATABASES = {
 	# PostgreSQL database used in production
 	'prod': {
 		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': os.environ.get('POSTGRES_DB'),
-		'USER': os.environ.get('POSTGRES_USER'),
-		'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+		'NAME': env.str('POSTGRES_DB', default=None),
+		'USER': env.str('POSTGRES_USER', default=None),
+		'PASSWORD': env.str('POSTGRES_PASSWORD', default=None),
 		'HOST': 'postgres',
 		'PORT': '5432',
 	},
@@ -151,7 +158,7 @@ DATABASES = {
 }
 
 # defaults to local if not set in environment variable
-default_database = os.environ.get('DJANGO_DATABASE', 'local')
+default_database = env.str('DJANGO_DATABASE', default='local')
 # sets detected database to default
 DATABASES['default'] = DATABASES[default_database]
 
@@ -186,10 +193,10 @@ SOCIALACCOUNT_PROVIDERS = {
 	'github': {
 		'APPS': [
 			{
-				'client_id': 'Ov23lia2PJfGFjNGTPi4',
-				'secret': '548f4217db504d8893d6661dffc9f3f1f9301aa9',
+				'client_id': 'these values',
+				'secret': 'will not work',
 				# 'key': ...,
-			} if os.environ.get('DJANGO_DATABASE', 'local') == 'local' else {
+			} if env.str('DJANGO_DATABASE', default='local') == 'local' else {
 				'client_id': secrets['github']['client_id'],
 				'secret': secrets['github']['secret'],
 			}
