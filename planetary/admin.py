@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import PlanetaryTour
 
 class PlanetaryTourAdmin(admin.ModelAdmin):
-    model = PlanetaryTourlist_display = (
+    model = PlanetaryTour
+    list_display = (
         'location_and_orbit',
         'about_planet', 
         'name', 
@@ -14,4 +15,4 @@ class PlanetaryTourAdmin(admin.ModelAdmin):
         'image4', 
         'link',
     )
-admin.site.register(PlanetaryTour)
+admin.site.register(PlanetaryTour, PlanetaryTourAdmin)
