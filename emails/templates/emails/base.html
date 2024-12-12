@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>{% block title %}{% endblock title %}</title>
+		
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		{% load static %}
+		<link rel="stylesheet" href="{% static "emails/style/style.css" %}" />
+	</head>
+
+	<body>
+		<main>
+			<h1 class="pretty">{% block mainheader %}{% endblock mainheader %}</h1>
+
+			{% block content %}
+
+			{% endblock content%}
+		</main>
+	</body>
+</html>

@@ -32,7 +32,7 @@ FORCE_SCRIPT_NAME = (
 
 try:
 	with open('secrets.yml', 'r') as f1:
-		secrets = yaml.safe_load(f1)
+		secrets: dict[str, dict] = yaml.safe_load(f1)
 		print('Found secrets file.')
 except FileNotFoundError:
 	print('Secrets file not found in this directory. Setting the `secrets` dict to empty.')
@@ -100,7 +100,7 @@ INSTALLED_APPS = [
 	'planetary',
 	'stellar',
 	'apod_app',
-
+	'emails',
 ]
 
 MIDDLEWARE = [
@@ -201,8 +201,10 @@ SOCIALACCOUNT_PROVIDERS = {
 				'secret': 'will not work',
 				# 'key': ...,
 			} if env.str('DJANGO_DATABASE', default='local') == 'local' else {
-				'client_id': secrets['github']['client_id'],
-				'secret': secrets['github']['secret'],
+				'client_id': secrets.get('github', {})\
+					.get('client_id', ''),
+				'secret': secrets.get('github', {})\
+					.get('secret', ''),
 			}
 		],
 		'SCOPE': [
@@ -254,6 +256,15 @@ LOGOUT_REDIRECT_URL = 'home'
 
 ACCOUNT_EMAIL_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'live.smtp.mailtrap.io'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = secrets.get('email', {})\
+# 	.get('username', '')
+# EMAIL_HOST_PASSWORD = secrets.get('email', {})\
+# 	.get('password', '')
 
 
 # Internationalization

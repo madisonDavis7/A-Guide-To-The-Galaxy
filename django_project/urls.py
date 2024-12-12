@@ -35,6 +35,7 @@ urlpatterns = [
 	path('planetary/', include("planetary.urls")),
 	path('stellar/', include("stellar.urls")),
 	path('ratings/', include('star_ratings.urls', namespace='ratings')),
+	path('emails/', include('emails.urls', namespace='emails')),
 	path('', include('apod_app.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
