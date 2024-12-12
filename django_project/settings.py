@@ -100,7 +100,7 @@ INSTALLED_APPS = [
 	'planetary',
 	'stellar',
 	'apod_app',
-	'emails',
+	'emails',  # used for making the templates pretty
 ]
 
 MIDDLEWARE = [
@@ -260,16 +260,18 @@ ACCOUNT_FORMS = {
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profiles:create'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Guide to the Galaxy] '
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'live.smtp.mailtrap.io'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = secrets.get('email', {})\
-# 	.get('username', '')
-# EMAIL_HOST_PASSWORD = secrets.get('email', {})\
-# 	.get('password', '')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_PORT = 587
+EMAIL_HOST_USER = secrets.get('email', {})\
+	.get('username', '')
+EMAIL_HOST_PASSWORD = secrets.get('email', {})\
+	.get('password', '')
 
 
 # Internationalization
