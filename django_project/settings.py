@@ -254,7 +254,12 @@ SOCIALACCOUNT_SIGNUP_REDIRECT_URL = 'profiles:create'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+ACCOUNT_FORMS = {
+	'signup': 'accounts.forms.ExtendedSignupForm',
+}
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profiles:create'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
