@@ -212,37 +212,6 @@ SOCIALACCOUNT_PROVIDERS = {
 			'email',
 		]
 	},
-	# "openid_connect": {
-	# 	# Optional PKCE defaults to False, but may be required by your provider
-	# 	# Can be set globally, or per app (settings).
-	# 	"OAUTH_PKCE_ENABLED": True,
-	# 	"APPS": [
-	# 		{
-	# 			"provider_id": "my-server",
-	# 			"name": "My Login Server",
-	# 			"client_id": "your.service.id",
-	# 			"secret": "your.service.secret",
-	# 			"settings": {
-	# 				"server_url": "https://my.server.example.com",
-	# 				# Optional token endpoint authentication method.
-	# 				# May be one of "client_secret_basic", "client_secret_post"
-	# 				# If omitted, a method from the the server's
-	# 				# token auth methods list is used
-	# 				"token_auth_method": "client_secret_basic",
-	# 				"oauth_pkce_enabled": True,
-	# 			},
-	# 		},
-	# 		{
-	# 			"provider_id": "other-server",
-	# 			"name": "Other Login Server",
-	# 			"client_id": "your.other.service.id",
-	# 			"secret": "your.other.service.secret",
-	# 			"settings": {
-	# 				"server_url": "https://other.server.example.com",
-	# 			},
-	# 		},
-	# 	],
-	# },
 }
 
 
