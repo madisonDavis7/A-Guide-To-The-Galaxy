@@ -11,6 +11,7 @@ class PlanetaryTourAdmin(admin.ModelAdmin):
         'image', 
         'image2', 
         'image3', 
-        'image4'
+        'image4', 
+        'link',
     )
 admin.site.register(PlanetaryTour)

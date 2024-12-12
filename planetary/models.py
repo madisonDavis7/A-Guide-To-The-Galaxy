@@ -10,6 +10,8 @@ class PlanetaryTour(models.Model):
     image2 = models.ImageField(upload_to='planetary_tours/', blank=True, null=True)
     image3 = models.ImageField(upload_to='planetary_tours/', blank=True, null=True)
     image4 = models.ImageField(upload_to='planetary_tours/', blank=True, null=True)
+    
+    link = models.CharField(max_length=100, default='none') #Link to NASA page
 
     def __str__(self):
         return self.name
