@@ -17,7 +17,7 @@
     {% for star in startours %}
         <div class="tour-item">
             <a href="{% url 'star_tour' pk=star.pk %}">
-                <img class="tour-image" src="{{ star.image.url }}" alt="{{ star.name }} Image">
+                <img class="tour-image" src="{{ star.home_image.url }}" alt="{{ star.name }} Image">
             </a>
             <h3>{{ star.name }}</h3>
         </div>
