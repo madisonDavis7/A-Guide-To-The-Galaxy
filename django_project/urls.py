@@ -37,7 +37,7 @@ urlpatterns = [
 	path('ratings/', include('star_ratings.urls', namespace='ratings')),
 	path('', include('apod_app.urls')),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_SERVE_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:
