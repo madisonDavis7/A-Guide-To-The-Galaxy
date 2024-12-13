@@ -32,7 +32,7 @@ FORCE_SCRIPT_NAME = (
 
 try:
 	with open('secrets.yml', 'r') as f1:
-		secrets = yaml.safe_load(f1)
+		secrets: dict[str, dict] = yaml.safe_load(f1)
 		print('Found secrets file.')
 except FileNotFoundError:
 	print('Secrets file not found in this directory. Setting the `secrets` dict to empty.')
@@ -100,7 +100,7 @@ INSTALLED_APPS = [
 	'planetary',
 	'stellar',
 	'apod_app',
-
+	'emails',  # used for making the templates pretty
 ]
 
 MIDDLEWARE = [
@@ -201,8 +201,10 @@ SOCIALACCOUNT_PROVIDERS = {
 				'secret': 'will not work',
 				# 'key': ...,
 			} if env.str('DJANGO_DATABASE', default='local') == 'local' else {
-				'client_id': secrets['github']['client_id'],
-				'secret': secrets['github']['secret'],
+				'client_id': secrets.get('github', {})\
+					.get('client_id', ''),
+				'secret': secrets.get('github', {})\
+					.get('secret', ''),
 			}
 		],
 		'SCOPE': [
@@ -210,37 +212,6 @@ SOCIALACCOUNT_PROVIDERS = {
 			'email',
 		]
 	},
-	# "openid_connect": {
-	# 	# Optional PKCE defaults to False, but may be required by your provider
-	# 	# Can be set globally, or per app (settings).
-	# 	"OAUTH_PKCE_ENABLED": True,
-	# 	"APPS": [
-	# 		{
-	# 			"provider_id": "my-server",
-	# 			"name": "My Login Server",
-	# 			"client_id": "your.service.id",
-	# 			"secret": "your.service.secret",
-	# 			"settings": {
-	# 				"server_url": "https://my.server.example.com",
-	# 				# Optional token endpoint authentication method.
-	# 				# May be one of "client_secret_basic", "client_secret_post"
-	# 				# If omitted, a method from the the server's
-	# 				# token auth methods list is used
-	# 				"token_auth_method": "client_secret_basic",
-	# 				"oauth_pkce_enabled": True,
-	# 			},
-	# 		},
-	# 		{
-	# 			"provider_id": "other-server",
-	# 			"name": "Other Login Server",
-	# 			"client_id": "your.other.service.id",
-	# 			"secret": "your.other.service.secret",
-	# 			"settings": {
-	# 				"server_url": "https://other.server.example.com",
-	# 			},
-	# 		},
-	# 	],
-	# },
 }
 
 
@@ -252,8 +223,24 @@ SOCIALACCOUNT_SIGNUP_REDIRECT_URL = 'profiles:create'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
+ACCOUNT_FORMS = {
+	'signup': 'accounts.forms.ExtendedSignupForm',
+}
 ACCOUNT_EMAIL_REQUIRED = True
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profiles:create'
+ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Guide to the Galaxy] '
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_PORT = 587
+EMAIL_HOST_USER = secrets.get('email', {})\
+	.get('username', '')
+EMAIL_HOST_PASSWORD = secrets.get('email', {})\
+	.get('password', '')
 
 
 # Internationalization
