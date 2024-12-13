@@ -15,12 +15,12 @@
         <img src="{{ object.image1.url }}" class="planet-image">
         <div class="info-text">
             <ul>
-                <p style="color:white;">  
-                    - {{ object.name }}
-                </p>
-                <p style="color:white;">
-                    - It is composed of the stars {{ object.stars }}.
-                </p>
+                <li style="color:white;">  
+                    {{ object.name }}
+                </li>
+                <li style="color:white;">
+                    It is composed of the stars {{ object.stars }}.
+                </li>
             </ul>
         </div>
     </div>
@@ -29,15 +29,15 @@
         <img src="{{ object.image2.url }}" class="planet-image">
         <div class="info-text">
             <ul>
-                <p style="color:white;">
-                    - {{ object.about1 }} 
-                </p>
-                <p style="color:white;">
-                    - {{ object.about2 }} 
-                </p>
-                <p style="color:white;">
-                    - {{ object.about3 }} 
-                </p>
+                <li style="color:white;">
+                    {{ object.about1 }} 
+                </li>
+                <li style="color:white;">
+                    {{ object.about2 }} 
+                </li>
+                <li style="color:white;">
+                    {{ object.about3 }} 
+                </li>
             </ul>
         </div>
     </div>
@@ -46,23 +46,23 @@
         <img src="{{ object.image3.url }}" class="planet-image">
         <div class="info-text">
             <ul>
-                <p style="color:white;">
+                <li style="color:white;">
                     The length of tour to {{ object.name }} is: {{ object.length }} months</li>
-                </p>
-                <p style="color:white;">
+                </li>
+                <li style="color:white;">
                     The total number of people that can register for this tour is: {{object.num_people }}</li>
-                </p>
-                <p style="color:white;">
+                </li>
+                <li style="color:white;">
                     For any questions about this tour or any others we offer please reach out. We are hapy to
                     make any needed accomodations or answer any questions relevant to the services we offer.
-                </p>
+                </li>
             </ul>
         </div>
     </div>
 
     <h3 class="box-title">Tour Rating</h3>
     <div class="rating">
-
+        {% ratings object %}
     </div>
 
     <div class="button-inline-tour">
