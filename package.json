@@ -10,8 +10,11 @@
 		"build-allauth": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --minify",
 		"build-allauth:watch": "npx tailwindcss -i allauth_ui/static/allauth_ui/input.css -o allauth_ui/static/allauth_ui/output.css --watch",
 
-		"compile-sass": "npx sass -I static/css -s compressed static/css/style.sass static/css/style.css",
-		"compile-sass:watch": "npx sass --watch -I static/css -s compressed static/css/style.sass static/css/style.css"
+		"build-main": "npx sass -I static/css -s compressed static/css/style.sass static/css/style.css",
+		"build-main:watch": "npx sass --watch -I static/css -s compressed static/css/style.sass static/css/style.css",
+		
+		"build-emails": "npx sass -I static/css -s compressed emails/static/emails/style/style.sass emails/static/emails/style/style.css",
+		"build-emails:watch": "npx sass --watch -I static/css -s compressed emails/static/emails/style/style.sass emails/static/emails/style/style.css"
 	},
 	"repository": {
 		"type": "git",
