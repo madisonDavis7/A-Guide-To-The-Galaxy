@@ -35,7 +35,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li><a href="{% url 'planetary' %}" class="nav-link px-2 link-light fst-italic" >Planetary</a></li>
+            <li><a href="{% url 'planetary:list' %}" class="nav-link px-2 link-light fst-italic" >Planetary</a></li>
             <li><a href="{% url 'stellar_home' %}"class="nav-link px-2 link-light fst-italic">Stellar</a></li>
             <li><a href="{% url 'profiles:all' %}"class="nav-link px-2 link-light fst-italic">Profiles</a></li>
           </ul>
@@ -58,7 +58,7 @@
                   {% endif %}
                   <li><hr class="dropdown-divider"></li>
                   
-                  {% if user.is_superuser %}
+                  {% if user.is_staff %}
                     <li><a href="{% url "admin:index" %}" class="dropdown-item link-dark">Django Admin</a></li>
                     <li><hr class="dropdown-divider"></li>
                   {% endif %}

@@ -18,8 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 # from . import views
-from .views import HomepageView, SignupView
-from .views import planetary
+from .views import HomepageView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
@@ -30,12 +31,13 @@ urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 
 	path('profiles/', include('profiles.urls')),
-	path('', HomepageView.as_view(), name='home'),
-	path('planetary/', planetary, name='planetary'),
+	#path('', HomepageView.as_view(), name='home'),
+	path('planetary/', include("planetary.urls")),
 	path('stellar/', include("stellar.urls")),
-	#path('', SignupView.as_view(), name='signup'),
-	path('ratings/', include('star_ratings.urls', namespace='ratings'))
-]
+	path('ratings/', include('star_ratings.urls', namespace='ratings')),
+	path('', include('apod_app.urls')),
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:
