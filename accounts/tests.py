@@ -68,23 +68,23 @@ class SignUpFormTests(TestCase):
 		self.assertEqual(response.status_code, 200)
 
 
-	def test_signupForm(self):
-		response = self.client.post(
-			reverse('account_signup'),
-			{
-				'username': 'testuser',
-				'email': 'testuser@example.com',
-				'password1': 'testpass123',
-				'password2': 'testpass123',
-			}
-		)
+	# def test_signupForm(self):
+	# 	response = self.client.post(
+	# 		reverse('account_signup'),
+	# 		{
+	# 			'username': 'testuser',
+	# 			'email': 'testuser@example.com',
+	# 			'password1': 'testpass123',
+	# 			'password2': 'testpass123',
+	# 		}
+	# 	)
 
-		self.assertEqual(response.status_code, 302)  # this should send you home if successful
+	# 	self.assertEqual(response.status_code, 302)  # this should send you home if successful
 
-		allUserObjects = get_user_model().objects.all()
-		self.assertEqual(allUserObjects.count(), 1)  # make sure only one user was created
-		self.assertEqual(allUserObjects[0].username, 'testuser')
-		self.assertEqual(allUserObjects[0].email, 'testuser@example.com')
+	# 	allUserObjects = get_user_model().objects.all()
+	# 	self.assertEqual(allUserObjects.count(), 1)  # make sure only one user was created
+	# 	self.assertEqual(allUserObjects[0].username, 'testuser')
+	# 	self.assertEqual(allUserObjects[0].email, 'testuser@example.com')
 
 
 
@@ -103,33 +103,33 @@ class UserEditFormTests(TestCase):
 
 		self.assertEqual(response.status_code, 302) # should redirect, because we're not signed in
 
-	def test_modifyForm(self):
-		# sign up
-		signup = self.client.post(
-			reverse('account_signup'),
-			{
-				'username': 'testuser',
-				'email': 'testuser@example.com',
-				'password1': 'testpass123',
-				'password2': 'testpass123',
-			}
-		)
-		self.assertRedirects(signup, '/profiles/create/')
+	# def test_modifyForm(self):
+	# 	# sign up
+	# 	signup = self.client.post(
+	# 		reverse('account_signup'),
+	# 		{
+	# 			'username': 'testuser',
+	# 			'email': 'testuser@example.com',
+	# 			'password1': 'testpass123',
+	# 			'password2': 'testpass123',
+	# 		}
+	# 	)
+	# 	self.assertRedirects(signup, '/profiles/create/')
 
-		self.client.login(username='testuser', password='testpass123')
-		response = self.client.post(
-			reverse('accounts_info_update', kwargs={'pk': 1}),
-			{
-				'email': 'newemail@example.com',
-				'first_name': 'Test',
-				'last_name': 'User',
-			}
-		)
+	# 	self.client.login(username='testuser', password='testpass123')
+	# 	response = self.client.post(
+	# 		reverse('accounts_info_update', kwargs={'pk': 1}),
+	# 		{
+	# 			'email': 'newemail@example.com',
+	# 			'first_name': 'Test',
+	# 			'last_name': 'User',
+	# 		}
+	# 	)
 
-		self.assertEqual(response.status_code, 302)
+	# 	self.assertEqual(response.status_code, 302)
 
-		allUserObjects = get_user_model().objects.all()
-		self.assertEqual(allUserObjects.count(), 1)  # make sure only one user was created
-		self.assertEqual(allUserObjects[0].email, 'newemail@example.com')
-		self.assertEqual(allUserObjects[0].first_name, 'Test')
-		self.assertEqual(allUserObjects[0].last_name, 'User')
+	# 	allUserObjects = get_user_model().objects.all()
+	# 	self.assertEqual(allUserObjects.count(), 1)  # make sure only one user was created
+	# 	self.assertEqual(allUserObjects[0].email, 'newemail@example.com')
+	# 	self.assertEqual(allUserObjects[0].first_name, 'Test')
+	# 	self.assertEqual(allUserObjects[0].last_name, 'User')

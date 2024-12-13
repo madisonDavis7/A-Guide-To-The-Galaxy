@@ -1,0 +1,18 @@
+{% extends "emails/base.html" %}
+
+{% block title %}Welcome to Guide to the Galaxy{% endblock title %}
+{% block mainheader %}Welcome!{% endblock mainheader %}
+{% block content %}
+
+<p>This is some sample text</p>
+
+
+<div class="button-inline">
+	<a href="{% url "" %}" class="button-29">
+		Confirm email
+	</a>
+
+	<p>If you'd rather copy and paste the link, here it is.</p>
+</div>
+
+{% endblock content %}
