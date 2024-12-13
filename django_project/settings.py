@@ -300,7 +300,12 @@ LOGGING = {
     },
 }
 
-MEDIA_URL = '/media/'
+MEDIA_URL = FORCE_SCRIPT_NAME + '/media/'
+if FORCE_SCRIPT_NAME != '':
+	MEDIA_SERVE_URL = '/'.join(MEDIA_URL.split('/')[2:])
+else:
+	MEDIA_SERVE_URL = MEDIA_URL
+
 MEDIA_ROOT = BASE_DIR / 'media'
 
 NASA_API_KEY = 'xgbprF9SyPJs5cFNUXfbeQi8A7F2yVFZYIg2xcxw'
