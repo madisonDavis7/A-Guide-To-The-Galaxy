@@ -59,7 +59,11 @@ ALLOWED_HOSTS = [
 	'localhost',
 	'127.0.0.1',
 	'csci258.cs.umt.edu',  # this is the url of the VM
-]
+	'.vercel.app',  # For Vercel deployment
+	'.railway.app',  # For Railway deployment
+	'.herokuapp.com',  # For Heroku deployment
+	# Add your custom domain here
+] + env.list('ALLOWED_HOSTS', default=[])
 INTERNAL_IPS = [
 	'127.0.0.1',
 	'localhost',
@@ -143,6 +147,8 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
 	# PostgreSQL database used in production
 	'prod': {
@@ -150,8 +156,8 @@ DATABASES = {
 		'NAME': env.str('POSTGRES_DB', default=None),
 		'USER': env.str('POSTGRES_USER', default=None),
 		'PASSWORD': env.str('POSTGRES_PASSWORD', default=None),
-		'HOST': 'postgres',
-		'PORT': '5432',
+		'HOST': env.str('POSTGRES_HOST', default='postgres'),
+		'PORT': env.str('POSTGRES_PORT', default='5432'),
 	},
 
 	# SQLite3 database used for development and testing
@@ -161,10 +167,14 @@ DATABASES = {
 	}
 }
 
-# defaults to local if not set in environment variable
-default_database = env.str('DJANGO_DATABASE', default='local')
-# sets detected database to default
-DATABASES['default'] = DATABASES[default_database]
+# Railway provides DATABASE_URL automatically
+if env.str('DATABASE_URL', default=None):
+	DATABASES['default'] = dj_database_url.parse(env.str('DATABASE_URL'))
+else:
+	# defaults to local if not set in environment variable
+	default_database = env.str('DJANGO_DATABASE', default='local')
+	# sets detected database to default
+	DATABASES['default'] = DATABASES[default_database]
 
 
 # Password validation
