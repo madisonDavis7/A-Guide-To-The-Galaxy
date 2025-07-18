@@ -1,0 +1,35 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    run.googleapis.com/ingress: all
+  name: guide-to-galaxy
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/cloudsql-instances: PROJECT_ID:REGION:INSTANCE_NAME
+        run.googleapis.com/cpu-throttling: "false"
+    spec:
+      containerConcurrency: 100
+      containers:
+      - image: gcr.io/PROJECT_ID/guide-to-galaxy
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DEBUG
+          value: "False"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: database_url
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: django_secret_key
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi

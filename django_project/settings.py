@@ -54,12 +54,16 @@ SECRET_KEY = env.str('SECRET_KEY', default='django-insecure-4$6@5&r4%kex2%me935-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', True)
 
+# Google Cloud Run port configuration
+PORT = env.int('PORT', default=8000)
+
 
 ALLOWED_HOSTS = [
 	'localhost',
 	'127.0.0.1',
 	'csci258.cs.umt.edu',  # this is the url of the VM
-]
+	'.run.app',  # For Google Cloud Run
+] + env.list('ALLOWED_HOSTS', default=[])
 INTERNAL_IPS = [
 	'127.0.0.1',
 	'localhost',
@@ -143,6 +147,8 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
 	# PostgreSQL database used in production
 	'prod': {
@@ -150,8 +156,8 @@ DATABASES = {
 		'NAME': env.str('POSTGRES_DB', default=None),
 		'USER': env.str('POSTGRES_USER', default=None),
 		'PASSWORD': env.str('POSTGRES_PASSWORD', default=None),
-		'HOST': 'postgres',
-		'PORT': '5432',
+		'HOST': env.str('POSTGRES_HOST', default='postgres'),
+		'PORT': env.str('POSTGRES_PORT', default='5432'),
 	},
 
 	# SQLite3 database used for development and testing
@@ -161,10 +167,14 @@ DATABASES = {
 	}
 }
 
-# defaults to local if not set in environment variable
-default_database = env.str('DJANGO_DATABASE', default='local')
-# sets detected database to default
-DATABASES['default'] = DATABASES[default_database]
+# Google Cloud SQL or DATABASE_URL configuration
+if env.str('DATABASE_URL', default=None):
+	DATABASES['default'] = dj_database_url.parse(env.str('DATABASE_URL'))
+else:
+	# defaults to local if not set in environment variable
+	default_database = env.str('DJANGO_DATABASE', default='local')
+	# sets detected database to default
+	DATABASES['default'] = DATABASES[default_database]
 
 
 # Password validation
