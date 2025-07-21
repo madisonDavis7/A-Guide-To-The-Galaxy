@@ -38,7 +38,11 @@ urlpatterns = [
 	path('emails/', include('emails.urls', namespace='emails')),
 	path('', include('apod_app.urls')),
 
-]+ static(settings.MEDIA_SERVE_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Serve media files in development only
+if settings.DEBUG:
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:

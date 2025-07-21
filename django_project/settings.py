@@ -284,6 +284,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # enable caching and compression when serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Configure WhiteNoise to serve media files in production
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = True
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 ALLAUTH_UI_THEME = 'starry'
@@ -320,11 +324,22 @@ LOGGING = {
 }
 
 MEDIA_URL = FORCE_SCRIPT_NAME + '/media/'
-if FORCE_SCRIPT_NAME != '':
-	MEDIA_SERVE_URL = '/'.join(MEDIA_URL.split('/')[2:])
-else:
-	MEDIA_SERVE_URL = MEDIA_URL
-
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Google Cloud Storage configuration for production media files
+if env.str('DATABASE_URL', default=None):  # Production environment
+    # Add 'storages' to INSTALLED_APPS
+    INSTALLED_APPS.append('storages')
+    
+    # Google Cloud Storage settings
+    GS_BUCKET_NAME = 'guide-to-galaxy-media-bucket'
+    GS_PROJECT_ID = 'guide-to-galaxy-app-2025'
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    
+    # Use the same bucket for static and media files, but in different folders
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    
+    # Override MEDIA_URL for production
+    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
 
 NASA_API_KEY = 'xgbprF9SyPJs5cFNUXfbeQi8A7F2yVFZYIg2xcxw'
