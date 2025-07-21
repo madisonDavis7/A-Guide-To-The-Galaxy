@@ -64,6 +64,13 @@ ALLOWED_HOSTS = [
 	'csci258.cs.umt.edu',  # this is the url of the VM
 	'.run.app',  # For Google Cloud Run
 ] + env.list('ALLOWED_HOSTS', default=[])
+
+# CSRF trusted origins for production
+CSRF_TRUSTED_ORIGINS = [
+	'https://*.run.app',
+	'https://guide-to-galaxy-1019331146280.us-central1.run.app',
+]
+
 INTERNAL_IPS = [
 	'127.0.0.1',
 	'localhost',
