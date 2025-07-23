@@ -1,6 +1,10 @@
 let slideIndex = 0;
-showSlides(slideIndex);
-  
+
+// Wait for DOM to be fully loaded before initializing slides
+document.addEventListener('DOMContentLoaded', function () {
+	showSlides(slideIndex);
+});
+
 // Function to change slides
 function changeSlide(n) {
 	showSlides(slideIndex += n);
@@ -9,7 +13,7 @@ function changeSlide(n) {
 // Function to show slides based on the current index
 function showSlides(n) {
 	const slides = document.getElementsByClassName("slide");
-	
+
 	// Reset the slide index if it exceeds the number of slides
 	if (n >= slides.length) {
 		slideIndex = 0; // Loop back to the first slide
@@ -20,9 +24,9 @@ function showSlides(n) {
 
 	// Hide all slides
 	for (let i = 0; i < slides.length; i++) {
-		slides[i].style.display = "none"; 
+		slides[i].style.display = "none";
 	}
 
 	// Show the current slide
-	slides[slideIndex].style.display = "block";  
+	slides[slideIndex].style.display = "block";
 }
