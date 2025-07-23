@@ -246,20 +246,28 @@ ACCOUNT_FORMS = {
 }
 
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+# Set email verification based on environment
+if env.str('DATABASE_URL', default=None):  # Production environment
+    ACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification in production
+else:
+    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Keep it for local development
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profiles:create'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Guide to the Galaxy] '
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_PORT = 587
-EMAIL_HOST_USER = secrets.get('email', {})\
-	.get('username', '')
-EMAIL_HOST_PASSWORD = secrets.get('email', {})\
-	.get('password', '')
+# Email configuration - different for production vs development
+if env.str('DATABASE_URL', default=None):  # Production environment
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Safe for production
+else:
+    # Local development email settings
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = secrets.get('email', {})\
+        .get('username', '')
+    EMAIL_HOST_PASSWORD = secrets.get('email', {})\
+        .get('password', '')
 
 
 # Internationalization
