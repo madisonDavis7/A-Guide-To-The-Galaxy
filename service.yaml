@@ -11,7 +11,8 @@ spec:
         run.googleapis.com/cloudsql-instances: PROJECT_ID:REGION:INSTANCE_NAME
         run.googleapis.com/cpu-throttling: "false"
     spec:
-      containerConcurrency: 100
+      containerConcurrency: 80
+      timeoutSeconds: 300
       containers:
       - image: gcr.io/PROJECT_ID/guide-to-galaxy
         ports:
@@ -31,5 +32,5 @@ spec:
               name: django_secret_key
         resources:
           limits:
-            cpu: 1000m
-            memory: 512Mi
+            cpu: 500m
+            memory: 256Mi

@@ -89,7 +89,6 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	
 	# -- 3rd-party apps -- #
-	'debug_toolbar',
 	'crispy_forms',
 	'crispy_bootstrap5',
 	'django_extensions',
@@ -123,7 +122,6 @@ MIDDLEWARE = [
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'debug_toolbar.middleware.DebugToolbarMiddleware',
 	"allauth.account.middleware.AccountMiddleware",
 ]
 
@@ -292,9 +290,10 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # enable caching and compression when serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Configure WhiteNoise to serve media files in production
+# Configure WhiteNoise for optimal compression and caching
 WHITENOISE_USE_FINDERS = True
-WHITENOISE_AUTOREFRESH = True
+WHITENOISE_AUTOREFRESH = False  # Disable in production for performance
+WHITENOISE_MAX_AGE = 31536000  # 1 year cache
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
