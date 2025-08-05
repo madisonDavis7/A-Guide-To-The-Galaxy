@@ -54,22 +54,11 @@ SECRET_KEY = env.str('SECRET_KEY', default='django-insecure-4$6@5&r4%kex2%me935-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', True)
 
-# Google Cloud Run port configuration
-PORT = env.int('PORT', default=8000)
-
 
 ALLOWED_HOSTS = [
 	'localhost',
 	'127.0.0.1',
-	'csci258.cs.umt.edu',  # this is the url of the VM
-	'.run.app',  # For Google Cloud Run
 ] + env.list('ALLOWED_HOSTS', default=[])
-
-# CSRF trusted origins for production
-CSRF_TRUSTED_ORIGINS = [
-	'https://*.run.app',
-	'https://guide-to-galaxy-1019331146280.us-central1.run.app',
-]
 
 INTERNAL_IPS = [
 	'127.0.0.1',
@@ -152,34 +141,13 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-import dj_database_url
-
 DATABASES = {
-	# PostgreSQL database used in production
-	'prod': {
-		'ENGINE': 'django.db.backends.postgresql',
-		'NAME': env.str('POSTGRES_DB', default=None),
-		'USER': env.str('POSTGRES_USER', default=None),
-		'PASSWORD': env.str('POSTGRES_PASSWORD', default=None),
-		'HOST': env.str('POSTGRES_HOST', default='postgres'),
-		'PORT': env.str('POSTGRES_PORT', default='5432'),
-	},
-
 	# SQLite3 database used for development and testing
-	'local': {
+	'default': {
 		'ENGINE': 'django.db.backends.sqlite3',
 		'NAME': BASE_DIR / 'db.sqlite3',
 	}
 }
-
-# Google Cloud SQL or DATABASE_URL configuration
-if env.str('DATABASE_URL', default=None):
-	DATABASES['default'] = dj_database_url.parse(env.str('DATABASE_URL'))
-else:
-	# defaults to local if not set in environment variable
-	default_database = env.str('DJANGO_DATABASE', default='local')
-	# sets detected database to default
-	DATABASES['default'] = DATABASES[default_database]
 
 
 # Password validation
@@ -215,11 +183,6 @@ SOCIALACCOUNT_PROVIDERS = {
 				'client_id': 'these values',
 				'secret': 'will not work',
 				# 'key': ...,
-			} if env.str('DJANGO_DATABASE', default='local') == 'local' else {
-				'client_id': secrets.get('github', {})\
-					.get('client_id', ''),
-				'secret': secrets.get('github', {})\
-					.get('secret', ''),
 			}
 		],
 		'SCOPE': [
@@ -244,28 +207,20 @@ ACCOUNT_FORMS = {
 }
 
 ACCOUNT_EMAIL_REQUIRED = True
-# Set email verification based on environment
-if env.str('DATABASE_URL', default=None):  # Production environment
-    ACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification in production
-else:
-    ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Keep it for local development
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profiles:create'
 ACCOUNT_EMAIL_SUBJECT_PREFIX = '[Guide to the Galaxy] '
 
-# Email configuration - different for production vs development
-if env.str('DATABASE_URL', default=None):  # Production environment
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Safe for production
-else:
-    # Local development email settings
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_USE_TLS = True
-    EMAIL_USE_SSL = False
-    EMAIL_PORT = 587
-    EMAIL_HOST_USER = secrets.get('email', {})\
-        .get('username', '')
-    EMAIL_HOST_PASSWORD = secrets.get('email', {})\
-        .get('password', '')
+# Email configuration for local development
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_PORT = 587
+EMAIL_HOST_USER = secrets.get('email', {})\
+	.get('username', '')
+EMAIL_HOST_PASSWORD = secrets.get('email', {})\
+	.get('password', '')
 
 
 # Internationalization
@@ -332,21 +287,5 @@ LOGGING = {
 
 MEDIA_URL = FORCE_SCRIPT_NAME + '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# Google Cloud Storage configuration for production media files
-if env.str('DATABASE_URL', default=None):  # Production environment
-    # Add 'storages' to INSTALLED_APPS
-    INSTALLED_APPS.append('storages')
-    
-    # Google Cloud Storage settings
-    GS_BUCKET_NAME = 'guide-to-galaxy-media-bucket'
-    GS_PROJECT_ID = 'guide-to-galaxy-app-2025'
-    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    
-    # Use the same bucket for static and media files, but in different folders
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    
-    # Override MEDIA_URL for production
-    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
 
 NASA_API_KEY = 'xgbprF9SyPJs5cFNUXfbeQi8A7F2yVFZYIg2xcxw'
