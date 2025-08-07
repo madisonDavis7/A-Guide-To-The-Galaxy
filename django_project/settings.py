@@ -201,11 +201,6 @@ SOCIALACCOUNT_SIGNUP_REDIRECT_URL = 'profiles:create'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-ACCOUNT_FORMS = {
-	'signup': 'accounts.forms.ExtendedSignupForm',
-	'reset_password_from_key': 'accounts.forms.SecurityQuestionResetPasswordKeyForm',
-}
-
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'profiles:create'
